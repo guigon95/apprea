@@ -73,7 +73,7 @@
             <div class="icon">
               <i class="fa fa-code"></i>
             </div>
-            <a href="pages/testeDeSoftware.html" class="small-box-footer">
+            <a href="pages/testeDeSoftware.php" class="small-box-footer">
               Continuar  <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
