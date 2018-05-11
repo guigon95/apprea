@@ -34,13 +34,14 @@
 <header>
   <?php
 
-  echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA".getenv('BASEURL');
+  require "..\includes\header.php";
 
 ?>
   </header>
 
   <!-- =============================================== -->
 <?php 
+  require '../includes/sidebar.php';
 
 ?> 
   <!-- =============================================== -->
