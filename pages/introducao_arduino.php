@@ -103,7 +103,7 @@
                         <div class="flex">
                           <img src="../dist/img/arduino-ide.webp" alt="Logo Arduino IDE" width="500">
                           <div class="ampliar centralizar_direita">
-                            <img src="../dist/img/arduinoide2.png" alt="IDE Arduino" width="400">
+                            <img src="https://github.com/guigon95/apprea/blob/master/dist/img/arduinoide2.PNG?raw=true" alt="IDE Arduino" width="400">
                           </div>
                         
                       </div>
