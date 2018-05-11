@@ -33,7 +33,6 @@
 
 <header>
   <?php
-  include ('../config.php');
 
   require "..\includes\header.php";
 
