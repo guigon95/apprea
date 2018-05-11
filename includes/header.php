@@ -3,7 +3,7 @@
 <html>
 <head>
 
-  <?php echo getenv('BASEURL')."dist/img/avatar5.png"  ?>
+  <?php echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa".getenv('BASEURL')."dist/img/avatar5.png"  ?>
   
 <body class="hold-transition skin-black-light sidebar-mini">
 <!-- Site wrapper -->
