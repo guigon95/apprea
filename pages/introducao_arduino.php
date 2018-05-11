@@ -112,7 +112,7 @@
                         <p>O software é uma IDE onde será implementado o código(sktech), utilizando uma linguagem de programação padrão, modelada a partir da linguagem Wiring, que será posteriormente carregado para a placa arduino, através de uma comunicação serial. No processo de upload, o código escrito é traduzido para a linguagem C e enviado para o compilador avr-gcc, que traduz os comandos para uma linguagem de baixo nível compreensível pelo microcontrolador.</p>
 
                         <p>Para realizar o download da IDE acesse: <a href="https://www.arduino.cc/en/main/software" target="_blank">Download</a></p>
-                        <p>Video aula para instalação: <a href="https://github.com/andreendo/umlino-rea/blob/master/V%C3%ADdeo%20Aulas%20de%20Instala%C3%A7%C3%A3o/Instala%C3%A7%C3%A3o%20Arduino%201.0.6%20.mp4" target="_blank">Video aula</a></p>
+                        <p>Video aula de instalação: <a href="https://github.com/andreendo/umlino-rea/blob/master/V%C3%ADdeo%20Aulas%20de%20Instala%C3%A7%C3%A3o/Instala%C3%A7%C3%A3o%20Arduino%201.0.6%20.mp4" target="_blank">Video aula</a></p>
                         <p>Para mais informações: <a href="https://www.arduino.cc/" target="_blank" alt="https://www.arduino.cc/">Arduino Oficial</a></p>
                         
                     </div>
