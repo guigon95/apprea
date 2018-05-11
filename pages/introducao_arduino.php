@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html>
-<style type="text/css">
-
-
-
-</style>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,14 +33,16 @@
 
 <header>
   <?php
-  require '../includes/header.php';
+  include ('../config.php');
+
+  require ABSPATH."\includes\header.php";
 
 ?>
   </header>
 
   <!-- =============================================== -->
 <?php 
-  require '../includes/sidebar.php';
+  require ABSPATH.'/includes/sidebar.php';
 
 ?> 
   <!-- =============================================== -->
@@ -102,19 +99,22 @@
                         <p><b>-6 Pinos de saída analógicas (pinos 3, 5, 6, 9, 10 e 11):</b></p>
                         <p>Estes podem ser programados para serem utilizados como saídas analógicas, utilizando modulação PWM.</p>
 
-                        https://www.embarcados.com.br/arduino-primeiros-passos/
 
                         <h4><b>Software:</b></h4>
 
-                        <section class="ampliar flex">
+                        <div class="flex">
                           <img src="../dist/img/arduino-ide.webp" alt="Logo Arduino IDE" width="500">
-                          <div class="centralizar_direita">
+                          <div class="ampliar centralizar_direita">
                             <img src="../dist/img/arduino-ide2.png" alt="IDE Arduino" width="400">
                           </div>
                         
-                      </section>
+                      </div>
 
                         <p>O software é uma IDE onde será implementado o código(sktech), utilizando uma linguagem de programação padrão, modelada a partir da linguagem Wiring, que será posteriormente carregado para a placa arduino, através de uma comunicação serial. No processo de upload, o código escrito é traduzido para a linguagem C e enviado para o compilador avr-gcc, que traduz os comandos para uma linguagem de baixo nível compreensível pelo microcontrolador.</p>
+
+                        <p>Para realizar o download da IDE acesse: <a href="https://www.arduino.cc/en/main/software" target="_blank">Download</a></p>
+                        <p>Video aula para instalação: <a href="https://github.com/andreendo/umlino-rea/blob/master/V%C3%ADdeo%20Aulas%20de%20Instala%C3%A7%C3%A3o/Instala%C3%A7%C3%A3o%20Arduino%201.0.6%20.mp4" target="_blank">Video aula</a></p>
+                        <p>Para mais informações: <a href="https://www.arduino.cc/" target="_blank" alt="https://www.arduino.cc/">Arduino Oficial</a></p>
                         
                     </div>
                   </div>
@@ -128,14 +128,71 @@
                     </h4>
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="box-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                      wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                      eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                      assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                      nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                      farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                      labore sustainable VHS.
+                
+                <div class="box-body">
+                	<p>O projeto introdutório consiste em dois pushbuttons que acendem e apagam um LED. O botão conectado ao pino 9 liga o LED e o botão conectado ao pino 8 desliga-o.</p>
+                      
+                    <p><b>Esquemático</b></p>
+                    <p>Utilize o esquemático abaixo para a montagem do circuito</p>
+                    <div align="center" class="ampliar">
+                    	<img src="img/esquematico_introducao.png" width="400" alt="Esquemático"> 
+                    </div>
+
+                    <div>
+                    	<p><b>Implementação</b></p>
+                    	<p>Para criação do sketch, abra a IDE do arduino e copie o código abaixo. Em seguida, conecte o cabo no arduino e no computador e selecione o botão carregar, localizado na parte superior esquerda da IDE, para carregar o sketch na placa.</p>
+
+                    </div>
+                   
+                   <div id="codigo_intro">
+	       			<h4>Código</h4>
+	                <div class="row" style="margin-top: 10px;">
+	                  <div class="col-md-12">
+	                    <div class="box box-solid">
+	                      
+	                      <div class="box-body">
+	                            <pre style="font-weight: 600;">
+
+int led = 10; // declaração das variáveis e da porta aonde se encontram
+int BotaoDesliga = 8;
+int BotaoLiga = 9;
+
+int EstadoBotao1 = 0; // essa função se limita a 0 = sem corrente e 1 = com corrente
+int EstadoBotao2 = 0;
+
+void setup(){ //inicialização
+pinMode(led, OUTPUT); // pino com led será saída (OUTPUT)
+pinMode(BotaoDesliga, INPUT); // pino com botão será entrada (INPUT)
+pinMode(BotaoLiga, INPUT);
+}
+
+void loop(){ // laço de repetição
+EstadoBotao1 = digitalRead(BotaoDesliga); // esta função lê o que está acontecendo com o botão e atribui a uma variável
+EstadoBotao2 = digitalRead(BotaoLiga);
+
+// HIGH = com corrente = aceso   = 1
+// LOW  = sem corrente = apagado = 0
+
+if (EstadoBotao1 == HIGH){ // se o botão estiver pressionado será HIGH, caso contrário LOW
+    digitalWrite(led, HIGH); // usa-se essa função para enviar o comando. HIGH = aceso
+  } 
+    
+if (EstadoBotao2 == HIGH){ 
+    digitalWrite(led, LOW);// LOW = apagado
+  } 
+
+}
+                                      </pre>
+                                </div>
+                                <!-- /.box-body -->
+                              </div>
+                              <!-- /.box -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                      </div>
+
                     </div>
                   </div>
                 </div>

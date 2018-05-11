@@ -5,7 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
+          <img src="<?php echo BASEURL ?>dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Nome do aluno</p>
@@ -19,7 +19,7 @@
         
         
         <li>
-          <a href="index.html">
+          <a href="<?php echo BASEURL ?>index.php">
             <i class="fa fa-th"></i> <span>Início</span>
             <span class="pull-right-container">
              <!-- <small class="label pull-right bg-green">Hot</small> -->
@@ -28,7 +28,7 @@
         </li>
 
         <li>
-          <a href="pages/introducao_arduino.php">
+          <a href="<?php echo BASEURL ?>pages/introducao_arduino.php">
              <span>Introdução</span>
             <span class="pull-right-container">
              <!-- <small class="label pull-right bg-green">Hot</small> -->
@@ -36,15 +36,7 @@
           </a>
         </li>
 
-
-        <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-files-o"></i> <span>Fases</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">Hot</small> -->
-            </span>
-          </a>
-        </li>       
+      
     </section>
     <!-- /.sidebar -->
   </aside>
