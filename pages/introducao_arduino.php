@@ -34,6 +34,8 @@
 <header>
   <?php
 
+  echo getenv('BASEURL');
+
 ?>
   </header>
 
