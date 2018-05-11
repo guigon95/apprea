@@ -37,7 +37,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo ABSPATH ?>dist/img/avatar5.png" class="img-circle" alt="User Image">
+                <img src="<?php echo BASEURL ?>dist/img/avatar5.png" class="img-circle" alt="User Image">
 
                 <p>
                   Nome - Aluno de engenharia de software
