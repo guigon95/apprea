@@ -32,7 +32,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="https://github.com/guigon95/apprea/blob/master/dist/img/avatar5.png?raw=true" class="user-image" alt="User Image">
+              <img src="<?php echo BASEURL ?>dist/img/avatar5.png?raw=true" class="user-image" alt="User Image">
               <span class="hidden-xs">Nome dao aluno</span>
             </a>
             <ul class="dropdown-menu">
