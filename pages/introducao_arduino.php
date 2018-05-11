@@ -34,7 +34,7 @@
 <header>
   <?php
 
-  echo getenv('BASEURL');
+  echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA".getenv('BASEURL');
 
 ?>
   </header>
