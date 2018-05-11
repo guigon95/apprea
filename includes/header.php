@@ -1,4 +1,4 @@
-<?php include (); ?>
+<?php  ?>
 <!DOCTYPE html>
 <html>
 <head>
