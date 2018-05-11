@@ -19,7 +19,7 @@
         
         
         <li>
-          <a href="<?php getenv('BASEURL') ?>index.php">
+          <a href="<?php echo BASEURL ?>index.php">
             <i class="fa fa-th"></i> <span>Início</span>
             <span class="pull-right-container">
              <!-- <small class="label pull-right bg-green">Hot</small> -->
@@ -28,7 +28,7 @@
         </li>
 
         <li>
-          <a href="<?php getenv('BASEURL') ?>pages/introducao_arduino.php">
+          <a href="<?php echo BASEURL ?>pages/introducao_arduino.php">
              <span>Introdução</span>
             <span class="pull-right-container">
              <!-- <small class="label pull-right bg-green">Hot</small> -->
