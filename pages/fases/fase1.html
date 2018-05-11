@@ -196,10 +196,11 @@
                 <div align="center" class="ampliar centralizar_acima">
                  <img  src="img/esquematico_fase1.png" width="400" alt="Photo">
                 </div>
-                </br>
+               	</br>
+            	</br>
 
-                <p>Código</p>
-                </br> 
+                <p><b>Código</b></p>
+
                 <div class="row" style="margin-top: 10px;">
                   <div class="col-md-12">
                     <div class="box box-solid">
@@ -268,7 +269,9 @@ void loop() {
                           <!-- /.row -->
 
                 </br>
-                <p><br>Casos de Teste</br></p>
+
+                <p><b>Casos de Teste</b></p>
+                <div class="casos_de_teste">
                 <p>O Teste 1 revela o seguinte defeito: Ao girar o potenciômetro no sentido horário até o fim, um dos LEDs não acende.</dd>
                 <div class="box-body">
               <table id="example2" class="table table-bordered table-hover">
@@ -302,18 +305,22 @@ void loop() {
                 <td>Todos os LEDs acesos</td>
               </tr>
             </table>
+        	</div>
 
-            <form role="form">
+    	</div>
+
+            <form id="invisivel" role="form">
                 <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
                       <input type="file" id="exampleInputFile">
 
-                      <p class="help-block">Example block-level help text here.</p>
+                      <p class="help-block">Carregue o caso de Teste 1.</p>
                     </div>
                 </div>
             </form>
 
+            <div class="casos_de_teste">
             </br></br>
                 <p>O Teste 2 revela o seguinte defeito: ao girar o potenciômetro, a sequência de acendimento e apagamento dos LEDs não é obedecida. Alguns LEDs também acendem com brilho mais baixo.</p>
                 <div class="box-body">
@@ -349,23 +356,24 @@ void loop() {
                 <td>Todos os LEDs apagados</td>
               </tr>
             </table>
+          </div>
+        </div>
 
-            <form role="form">
+            <form id="formInput2" role="form">
                 <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
                       <input type="file" id="exampleInputFile">
 
-                      <p class="help-block">Example block-level help text here.</p>
+                      <p class="help-block">Carregue o caso de Teste 2.</p>
                     </div>
                 </div>
             </form>
 
             </div>
-                </dl>
               </div>
               </form>
-            </div>
+
 
 
 
@@ -376,7 +384,7 @@ void loop() {
     <!-- /.content -->
 
         <div align="center" class="timeline-footer">
-            <a href="fases.html" class="btn btn-primary btn-xs">Continuar</a>
+            <a href="#button_enviar" id="button_enviar" class="btn btn-primary btn-xs">Enviar Respostas</a>
         </div>
   </div>                 
           
@@ -407,7 +415,30 @@ void loop() {
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-  })
+});
+
+  	var flag = 0;
+    $('#button_enviar').click(function(){
+    	$(".casos_de_teste").css("display", "block");
+    	$("#formInput1").css("display", "none");
+
+    	$("#formInput2").css("display", "none");
+
+    	$("#button_enviar").text("Continuar");
+
+    	if(flag == 1)
+    	$("#button_enviar").attr("href", "fases.html");
+
+    	flag = 1;
+    	
+    });
+
+    $("#button_continuar").click(function(){
+    	alert("foi");
+    });
+  
+
+
 </script>
 </body>
 </html>
