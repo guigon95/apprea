@@ -1,4 +1,4 @@
-<?php include ('config.php'); ?>
+<?php include ('https://apprea.herokuapp.com/config.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
