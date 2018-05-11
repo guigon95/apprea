@@ -39,7 +39,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php getenv('BASEURL') ?>dist/img/avatar5.png" class="img-circle" alt="User Image">
+                <img src="https://github.com/guigon95/apprea/blob/master/dist/img/avatar5.png?raw=true" class="img-circle" alt="User Image">
 
                 <p>
                   Nome - Aluno de engenharia de software

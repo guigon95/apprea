@@ -31,7 +31,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<header>
   <?php
 
   require "../includes/header.php";
@@ -144,7 +143,7 @@
                     </div>
                    
                    <div id="codigo_intro">
-	       			<h4>Código</h4>
+	       			<p><b>Código</b></p>
 	                <div class="row" style="margin-top: 10px;">
 	                  <div class="col-md-12">
 	                    <div class="box box-solid">
