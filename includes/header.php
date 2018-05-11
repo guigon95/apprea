@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT'].'/apprea/config.php'; ?>
+<?php include ('config.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
