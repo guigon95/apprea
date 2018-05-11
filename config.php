@@ -13,7 +13,7 @@ if ( !defined('ABSPATH') )
 	
 /** caminho no server para o sistema **/
 if ( !defined('BASEURL') )
-	define('BASEURL', 'https://apprea.herokuapp.com/');
+	define('BASEURL', '/apprea/');
 	
 /** caminho do arquivo de banco de dados **/
 if ( !defined('DBAPI') )
