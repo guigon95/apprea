@@ -104,7 +104,7 @@
                         <div class="flex">
                           <img src="../dist/img/arduino-ide.webp" alt="Logo Arduino IDE" width="500">
                           <div class="ampliar centralizar_direita">
-                            <img src="<?php echo BASEURL ?>dist/img/arduinoide2.png" alt="IDE Arduino" width="400">
+                            <img src="<?php echo BASEURL ?>dist/img/arduinoide2.PNG" alt="IDE Arduino" width="400">
                           </div>
                         
                       </div>
