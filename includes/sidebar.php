@@ -5,7 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php getenv('BASEURL') ?>dist/img/avatar5.png" class="img-circle" alt="User Image">
+          <img src="https://github.com/guigon95/apprea/blob/master/dist/img/avatar5.png?raw=true" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Nome do aluno</p>
