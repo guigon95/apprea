@@ -14,3 +14,7 @@
 .centralizar_direita img:hover{
   padding-right: 100px;
 }
+
+.centralizar_acima img:hover{
+  padding-top: 100px;
+}
