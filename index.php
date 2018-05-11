@@ -30,6 +30,7 @@
 </head>
   <header>
 <?php
+
   require'includes/header.php';
 
 ?>
