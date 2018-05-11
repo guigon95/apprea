@@ -35,14 +35,14 @@
   <?php
   include ('../config.php');
 
-  require ABSPATH.'includes\header.php';
+  require '..\includes\header.php';
 
 ?>
   </header>
 
   <!-- =============================================== -->
 <?php 
-  require ABSPATH.'/includes/sidebar.php';
+  require '../includes/sidebar.php';
 
 ?> 
   <!-- =============================================== -->
