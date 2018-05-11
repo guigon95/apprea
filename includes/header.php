@@ -9,7 +9,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo BASEURL ?>index.php" class="logo">
+    <a href="<?php echo $_SERVER['DOCUMENT_ROOT'] ?>/index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>U</b>TF</span>
       <!-- logo for regular state and mobile devices -->
