@@ -8,7 +8,7 @@
           <img src="<?php echo BASEURL ?>dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nome do aluno</p>
+          <p><?php echo $_SESSION['nome_usuario']?></p>
           
         </div>
       </div>
@@ -29,7 +29,7 @@
 
         <li>
           <a href="<?php echo BASEURL ?>pages/introducao_arduino.php">
-             <span>Introdução</span>
+            <i class="fa fa-files-o"></i><span>Introdução</span>
             <span class="pull-right-container">
              <!-- <small class="label pull-right bg-green">Hot</small> -->
             </span>
