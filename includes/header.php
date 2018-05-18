@@ -5,7 +5,7 @@
       unset($_SESSION['email_usuario']);
       unset($_SESSION['senha_usuario']);
       session_destroy();
-      header('location:login.php');
+      header(BASEURL.'location:login.php');
     }
 
  ?>
