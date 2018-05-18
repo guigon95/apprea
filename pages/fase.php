@@ -69,7 +69,7 @@
                 <p><b>Esquemático</b></p>
                 <p>Utilize o esquemático abaixo para montar o circuito.</p>
                 <div align="center" class="ampliar centralizar_acima">
-                 <img  src="img/esquematico_fase1.png" width="400" alt="Photo">
+                 <img  src="<?php echo $rows['esquematico_fase'] ?>" width="400" alt="Photo">
                 </div>
                	</br>
             	</br>
