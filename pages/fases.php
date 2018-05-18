@@ -63,7 +63,7 @@
 
         else{
           ?>
-          <h1><?php echo "Nenhuma fase cadastrada"??></h1>
+          <p><?php echo "Nenhuma fase cadastrada"??></p>
           <?php
         }
 
