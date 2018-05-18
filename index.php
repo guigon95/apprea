@@ -5,7 +5,7 @@
   include (SIDEBAR_TEMPLATE);
   require_once('functions.php');
 
-  $rows = find('area');
+  $rows = find('area', null, null);
   
 
 ?>
@@ -46,7 +46,7 @@
             <div class="icon">
               <i class="fa fa-code"></i>
             </div>
-            <a href="pages/testeDeSoftware.php" class="small-box-footer">
+            <a href="pages/introducao_area.php?area=<?php echo $value['id_area'] ?>" class="small-box-footer">
               Continuar  <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>

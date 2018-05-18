@@ -2,20 +2,32 @@
 
 	require_once ('database.php');
 
-	function find($table){
+	function find($table, $id, $table_id){
 
 		$sql = "SELECT * FROM " . $table;
+		
 
-		$rs = $GLOBALS['pdo']->prepare($sql);
+		if(empty($id)){
+			$rs = $GLOBALS['pdo']->prepare($sql);
+		}
+		else{
+			$sql = $sql." WHERE id_".$table_id." = ?";
+			$rs = $GLOBALS['pdo']->prepare($sql);
+			$rs->bindParam(1, $id);	
+		}
+		
 		try{
 
 			if ($rs->execute()) {
-				if($rs->rowCount() > 0){
+				if($rs->rowCount() > 1){
 						return $rs->fetchAll();
-					}
-					else{
-						return null;
-					}
+				}
+				elseif($rs->rowCount() == 1){
+						return $rs->fetch(PDO::FETCH_ASSOC);
+				}
+				else{
+					return null;
+				}
 			}
 		} catch (PDOException $e) {
 				die(error($e, $sql));
