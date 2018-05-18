@@ -5,7 +5,8 @@
   include (SIDEBAR_TEMPLATE);
   require_once(ABSPATH.'functions.php');
 
- 
+  
+  if(isset($_GET['area']))
   $id_area = $_GET['area'];
   
 
@@ -23,7 +24,7 @@
      
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php" ?>"><i class="fa fa-dashboard"></i> Início</a></li>
-        <li><a href="<?php echo BASEURL?>introducao_area.php?area=<?php echo $id_area ?>"><i class="fa fa-code"></i>Introdução</a></li>
+        <li><a href="<?php echo BASEURL?>pages/introducao_area.php?area=<?php echo $id_area ?>"><i class="fa fa-code"></i>Introdução</a></li>
         <li class="active">Testes></li>
       </ol>
     </section>

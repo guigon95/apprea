@@ -5,8 +5,10 @@
     include (SIDEBAR_TEMPLATE);
     require_once(ABSPATH.'functions.php');
 
-    $rows = find('fase', $_GET['area'], 'area');
-
+    if(isset($_GET['area']))
+      $rows = find('fase', $_GET['area'], 'area');
+    else
+      $rows = null;
 ?>
   <!-- =============================================== -->
 
@@ -57,6 +59,10 @@
 
         <?php 
                 }
+        }
+
+        else{
+          echo "Nenhuma fase cadastrada"
         }
 
         ?>
