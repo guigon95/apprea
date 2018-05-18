@@ -60,13 +60,6 @@
         <?php 
                 }
         }
-
-        else{
-          ?>
-          <p><?php echo "Nenhuma fase cadastrada"??></p>
-          <?php
-        }
-
         ?>
 
 
