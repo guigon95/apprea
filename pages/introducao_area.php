@@ -30,7 +30,7 @@
        <?php echo $nome_area['nome_area']; ?>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php getenv('BASEURL')?>index.php"><i class="fa fa-dashboard"></i> Início</a></li>
+        <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i> Início</a></li>
         <li class="active">Introdução</li>
       </ol>
     </section>

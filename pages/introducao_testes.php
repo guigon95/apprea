@@ -22,8 +22,8 @@
     <section class="content-header">
      
       <ol class="breadcrumb">
-        <li><a href="../index.html"><i class="fa fa-dashboard"></i> Início</a></li>
-        <li><a href="testeDeSoftware.html"><i class="fa fa-code"></i>Introdução</a></li>
+        <li><a href="<?php echo BASEURL?>index.php" ?>"><i class="fa fa-dashboard"></i> Início</a></li>
+        <li><a href="<?php echo BASEURL?>introducao_area.php?area=<?php echo $id_area ?>"><i class="fa fa-code"></i>Introdução</a></li>
         <li class="active">Testes></li>
       </ol>
     </section>
