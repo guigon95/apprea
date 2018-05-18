@@ -5,11 +5,9 @@
     include (SIDEBAR_TEMPLATE);
     require_once(ABSPATH.'functions.php');
 
-   //   $rows = null;
+   
     if(!empty($_GET['area']))
       $rows = find('fase', $_GET['area'], 'area');
-   // else
-    //  $rows = null;
 ?>
   <!-- =============================================== -->
 
@@ -21,17 +19,17 @@
         Teste de Sotfware
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Início</a></li>
-        <li><a href="../testeDeSoftware.html"><i class="fa fa-code"></i>Introdução</a></li>
-        <li><a href="../teste_testeDeSoftware.html"><i class="fa fa-code"></i>Testes</a></li>
+        <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i> Início</a></li>
         <li class="active">Fases</li>
       </ol>
     </section>
 
     <!-- Main content -->
+
     <section class="content">
 
       <!-- Small boxes (Stat box) -->
+      <div class="row">
 
       <?php 
       if($rows != null){
@@ -40,7 +38,7 @@
 
       ?>
 
-      <div class="row">
+      
         <div class="col-lg-3 col-xs-12">
           <!-- small box -->
           <div class="small-box bg-aqua">
@@ -52,11 +50,11 @@
             <div class="icon">
               <i class="fa fa-book"></i>
             </div>
-            <a href="fase1.html" class="small-box-footer">
+            <a href="fase.php?fase=<?php echo $value['id_fase']?>" class="small-box-footer">
               Continuar <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
-        </div>
+         </div>
 
         <?php 
                 }
@@ -67,10 +65,10 @@
         <p><?php echo "Nenhuma fase cadastrada"; ?></p>
         <?php } ?>
              
-
+      </div>
     </section>
     <!-- /.content -->
-  </div>
+ </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
