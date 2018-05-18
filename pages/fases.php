@@ -7,8 +7,8 @@
 
     if(isset($_GET['area']))
       $rows = find('fase', $_GET['area'], 'area');
-    else
-      $rows = null;
+   // else
+    //  $rows = null;
 ?>
   <!-- =============================================== -->
 
