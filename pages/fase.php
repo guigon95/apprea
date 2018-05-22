@@ -57,7 +57,6 @@
                 </br>
 
                 <p><b>Itens Utilizados</b></p>
-                <p>1 - Arduino.</p>
                 <p>1 - Potenciômetro.</p>
                 <p>4 - Resistores.</p>                
                 <p>1 - LED Verde.</p>
