@@ -11,6 +11,6 @@ if ( !defined('BASEURL') )
 if ( !defined('DBAPI') )
 	define('DBAPI', ABSPATH . 'includes/database.php');
 
-define('HEADER_TEMPLATE', ABSPATH . 'includes/header.php');
+define('HEADER_TEMPLATE', ABSPATH .'includes/header.php');
 define('SIDEBAR_TEMPLATE', ABSPATH . 'includes/sidebar.php');
 ?>

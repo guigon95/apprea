@@ -1,24 +1,33 @@
 <?php
-
+  ob_start();
   require_once ('../config.php');  
   include (HEADER_TEMPLATE);
   include (SIDEBAR_TEMPLATE);
   require_once(ABSPATH.'functions.php');
 
- 
+ $rows = null;
+ $nome_area = null;
+ $descricao_introducao = null;
+ if(isset($_GET['area']))
   $rows = find('introducao', $_GET['area'], 'area');
-  if($rows != null){                
-  
-        $nome_area = find('area', $rows['id_area'], 'area');
-        $id_area = $rows['id_area'];
-        $descricao_introducao = $rows['descricao_introducao']; 
-    
+  if($rows != null){       
+        $rows_usr_has_intro = findUserIntro($_SESSION['id_usuario'], $rows['id_introducao']);
+        if($rows_usr_has_intro['flag_introducao'] == 0){
+            $rows_area = find('area', $rows['id_area'], 'area');
+            $descricao_introducao = $rows['descricao_introducao']; 
+            $nome_area = $rows_area['nome_area'];
+            $post = array('tabela' => 'usuario_has_introducao', 'valor' => 1, 'campo' => 'flag_introducao', 'tabela_id' => 'usuario', 'tabela_id2' => 'introducao');
+            save_item($post, $_SESSION['id_usuario'], $rows['id_introducao']);
+        }
+        else{
+          header('Location: '.BASEURL.'pages/fases.php?area=2');
+        }
   }
   else{
-      $nome_area['nome_area'] = null;
-      $descricao_introducao = "Nenhuma introdução cadastrada";
+    $descricao_introducao = "Nenhuma Introdução cadastrada";
+
   }
-?>
+  ?>
 
   <!-- =============================================== -->
 
@@ -27,7 +36,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       <?php echo $nome_area['nome_area']; ?>
+       <?php  ?>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i> Início</a></li>
@@ -53,7 +62,7 @@
 
      
           <div align="center" class="timeline-footer">
-              <a href="introducao_testes.php?area=<?php echo $id_area?>" class="btn btn-primary btn-xs">Continuar</a>
+              <a href="introducao_testes.php?area=<?php echo $rows['id_area']?>" class="btn btn-primary btn-xs">Continuar</a>
           </div>
 
     </section>

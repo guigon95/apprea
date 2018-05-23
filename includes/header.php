@@ -1,6 +1,4 @@
-<?php 
-
-    session_start();
+<?php session_start();
     if(!(isset ($_SESSION['email_usuario'])) and (!isset ($_SESSION['senha_usuario']))){
       unset($_SESSION['email_usuario']);
       unset($_SESSION['senha_usuario']);
@@ -104,9 +102,3 @@
       </div>
     </nav>
   </header>
-
-<script type="text/javascript">
-    
-  
-
-</script>
