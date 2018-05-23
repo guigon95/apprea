@@ -101,13 +101,13 @@
 
                         <h4><b>Software:</b></h4>
 
-                        <div class="flex">
-                          <img src="../dist/img/arduino-ide.webp" alt="Logo Arduino IDE" width="500">
-                          <div class="ampliar centralizar_direita">
+                      
+                        <center><div class="ampliar">
                             <img src="<?php echo BASEURL ?>dist/img/arduinoide2.PNG" alt="IDE Arduino" width="400">
                           </div>
+                        </center>
                         
-                      </div>
+                      
 
                         <p>O software é uma IDE onde será implementado o código(sktech), utilizando uma linguagem de programação padrão, modelada a partir da linguagem Wiring, que será posteriormente carregado para a placa arduino, através de uma comunicação serial. No processo de upload, o código escrito é traduzido para a linguagem C e enviado para o compilador avr-gcc, que traduz os comandos para uma linguagem de baixo nível compreensível pelo microcontrolador.</p>
 

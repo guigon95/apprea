@@ -6,16 +6,19 @@
   require_once(ABSPATH.'functions.php');
 
  $rows = null;
- $nome_area = null;
- $descricao_introducao = null;
+
  if(isset($_GET['area']))
   $rows = find('introducao', $_GET['area'], 'area');
+
   if($rows != null){       
         $rows_usr_has_intro = findUserIntro($_SESSION['id_usuario'], $rows['id_introducao']);
-        if($rows_usr_has_intro['flag_introducao'] == 0){
+
+        if($rows_usr_has_intro['flag_introducao'] == 0 || !empty($_GET['intro'])){
             $rows_area = find('area', $rows['id_area'], 'area');
-            $descricao_introducao = $rows['descricao_introducao']; 
             $nome_area = $rows_area['nome_area'];
+
+            $descricao_introducao = $rows['descricao_introducao']; 
+           
             $post = array('tabela' => 'usuario_has_introducao', 'valor' => 1, 'campo' => 'flag_introducao', 'tabela_id' => 'usuario', 'tabela_id2' => 'introducao');
             save_item($post, $_SESSION['id_usuario'], $rows['id_introducao']);
         }

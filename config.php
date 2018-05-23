@@ -5,7 +5,7 @@ if ( !defined('ABSPATH') )
 	
 /** caminho no server para o sistema **/
 if ( !defined('BASEURL') )
-	define('BASEURL', /*'/apprea/'); */'https://apprea.herokuapp.com/');
+	define('BASEURL', '/apprea/'); /*'https://apprea.herokuapp.com/');
 	
 /** caminho do arquivo de banco de dados **/
 if ( !defined('DBAPI') )
@@ -13,4 +13,5 @@ if ( !defined('DBAPI') )
 
 define('HEADER_TEMPLATE', ABSPATH .'includes/header.php');
 define('SIDEBAR_TEMPLATE', ABSPATH . 'includes/sidebar.php');
+define('FOOTER_TEMPLATE', ABSPATH . 'includes/footer.php');
 ?>
