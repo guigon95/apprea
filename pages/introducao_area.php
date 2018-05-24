@@ -23,7 +23,7 @@
             save_item($post, $_SESSION['id_usuario'], $rows['id_introducao']);
         }
         else{
-          header('Location: '.BASEURL.'pages/fases.php?area=2');
+          header("Location: ".BASEURL."pages/fases.php?area=".$rows['id_area']);
         }
   }
   else{
@@ -39,10 +39,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       <?php  ?>
+       <?php echo ($nome_area)?>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i> Início</a></li>
+        <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i>Início</a></li>
         <li class="active">Introdução</li>
       </ol>
     </section>
@@ -52,11 +52,11 @@
 
       <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Introdução </h3>
+              <h3 class="box-title">Introdução</h3>
             </div>
             <div class="box-body">
 
-              <p><?php echo $descricao_introducao ?></p>
+              <p><?php echo $descricao_introducao?></p>
 
             </div>
 

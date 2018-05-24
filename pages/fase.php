@@ -80,57 +80,24 @@
                       
                       <div class="box-body">
                             <pre style="font-weight: 600;">
-#define LED1 3
-#define LED2 4
-#define LED3 5
-#define LED4 6
-#define POT A5
 
-//Variaveis
-int valorPot = 0;
+<?php 
 
-void setup() {
-  // put your setup code here, to run once:
-  pinMode(POT, INPUT);
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
-  pinMode(LED3, OUTPUT);
-  pinMode(LED4, OUTPUT);  
-}
+      if(!empty($rows['codigo_fase'])){
+        $ponteiro = fopen ($rows['codigo_fase'],"r");
 
-void loop() {  
-  //Lê valor do potenciometro
-  valorPot = analogRead(POT);
+        while (!feof ($ponteiro)) {
+          $linha = fgets($ponteiro, 4096);
+          echo $linha;
+        }
 
-  //Controla LED 1
-  if(valorPot > 255){
-    digitalWrite(LED1, HIGH);
-  } else{
-    digitalWrite(LED2, LOW);
-  }
+        fclose ($ponteiro);
 
-  //Controla LED 2
-  if(valorPot > 512){
-    digitalWrite(LED3, HIGH);
-  } else{
-    digitalWrite(LED4, LOW);
-  }
+     }
+     else
+        echo "Nenhum código no banco de dados";
 
-  //Controla LED 3
-  if(valorPot > 768){
-    digitalWrite(LED4, HIGH);
-  } else{
-    digitalWrite(LED3, LOW);
-  }
-
-  //Controla LED 4
-  if(valorPot > 1000){
-    digitalWrite(LED2, HIGH);
-  } else{
-    digitalWrite(LED1, LOW);
-  }
-
-            }
+?>
                                       </pre>
                                 </div>
                                 <!-- /.box-body -->
@@ -140,14 +107,15 @@ void loop() {
                             <!-- /.col -->
                           </div>
                           <!-- /.row -->
+                          </form>
 <?php } ?>
                 </br>
 
                 <p><b>Casos de Teste</b></p>
                 <div class="casos_de_teste">
-                <p>O Teste 1 revela o seguinte defeito: Ao girar o potenciômetro no sentido horário até o fim, um dos LEDs não acende.</dd>
+                <p>O Teste 1 revela o seguinte defeito: Ao girar o potenciômetro no sentido horário até o fim, um dos LEDs não acende.</p>
                 <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="example1" class="table table-bordered table-hover">
               <tr>
                 <th colspan="2" align="center">Caso de Teste</th>
               </tr>
@@ -168,7 +136,7 @@ void loop() {
                 <td>Potenciômetro girado no sentido anti-horário até o fim</td>
               </tr>
               <tr>
-                <td><dt>Procedimentos (Entradas e saídas)</td>
+                <td><dt>Procedimentos (Entradas e saídas)</dt></td>
                 <td>1 – Girar o potenciômetro no sentido horário até o final
 <p>2 – Os LEDs devem acender um a um até que todos estejam acesos representando “volume máximo”</p>
 </td>
@@ -179,10 +147,9 @@ void loop() {
               </tr>
             </table>
         	</div>
+    	   </div>
 
-    	</div>
-
-            <form id="invisivel" role="form">
+            <form id="formInput1" role="form">
                 <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
@@ -193,9 +160,11 @@ void loop() {
                 </div>
             </form>
 
+
+
+
             <div class="casos_de_teste">
-            </br></br>
-                <p>O Teste 2 revela o seguinte defeito: ao girar o potenciômetro, a sequência de acendimento e apagamento dos LEDs não é obedecida. Alguns LEDs também acendem com brilho mais baixo.</p>
+            </br>                <p>O Teste 2 revela o seguinte defeito: ao girar o potenciômetro, a sequência de acendimento e apagamento dos LEDs não é obedecida. Alguns LEDs também acendem com brilho mais baixo.</p>
                 <div class="box-body">
               <table id="example2" class="table table-bordered table-hover">
               <tr>
@@ -218,7 +187,7 @@ void loop() {
                 <td>Potenciômetro girado no sentido anti-horário até o fim</td>
               </tr>
               <tr>
-                <td><dt>Procedimentos (Entradas e saídas)</td>
+                <td><dt>Procedimentos (Entradas e saídas)</dt></td>
                 <td><p>1 – Girar o potenciômetro no sentido horário lentamente</p>
                     <p>2 – Os LEDs devem acender na sequência: verde, amarelo, amarelo e vermelho</p>
                     <p>3 – Girar o potenciômetro no sentido anti-horário lentamente</p>
@@ -243,15 +212,7 @@ void loop() {
                 </div>
             </form>
 
-            </div>
-              </div>
-              </form>
 
-
-
-
-                 
-     
 
     </section>
     <!-- /.content -->
