@@ -6,12 +6,12 @@
   require_once(ABSPATH.'functions.php');
 
  $rows = null;
-
+ $nome_area = null;
  if(isset($_GET['area']))
   $rows = find('introducao', $_GET['area'], 'area');
 
   if($rows != null){       
-        $rows_usr_has_intro = findUserIntro($_SESSION['id_usuario'], $rows['id_introducao']);
+        $rows_usr_has_intro = find2id('usuario_has_introducao', $_SESSION['id_usuario'], $rows['id_introducao'], 'usuario', 'introducao');
 
         if($rows_usr_has_intro['flag_introducao'] == 0 || !empty($_GET['intro'])){
             $rows_area = find('area', $rows['id_area'], 'area');

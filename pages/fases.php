@@ -32,10 +32,14 @@
       <div class="row">
 
       <?php 
-      if($rows != null){
+      	if($rows != null){
                 
                 foreach ($rows as $row => $value) {
 
+                $rows_usr_has_fase = find2id('usuario_has_fase', $_SESSION['id_usuario'], $value['id_fase'], 'usuario', 'fase');
+
+          
+                
       ?>
 
       
@@ -50,14 +54,23 @@
             <div class="icon">
               <i class="fa fa-book"></i>
             </div>
+            <?php if($rows_usr_has_fase['flag_fase'] == 1){ ?>
             <a href="fase.php?fase=<?php echo $value['id_fase']?>" class="small-box-footer">
               Continuar <i class="fa fa-arrow-circle-right"></i>
             </a>
+
+            <?php }else if ($rows_usr_has_fase['flag_fase'] == 0) { ?>
+            <a href="fase.php?fase=<?php echo $value['id_fase']?>" class="small-box-footer" style="pointer-events: none;
+   cursor: default;">
+              Continuar <i class="fa fa-lock"></i>
+            </a>
+            <?php } ?>
           </div>
          </div>
 
-        <?php 
-                }
+        <?php 	  	
+        		
+               }      
         }
 
         else{

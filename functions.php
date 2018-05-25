@@ -45,18 +45,21 @@
 			return $array;
 		}
 
-	function findUserIntro($id_usuario, $id_introducao){
+	function find2id($table, $id1, $id2, $table_id1, $table_id2){
 
-		$sql = "SELECT * FROM usuario_has_introducao WHERE id_usuario = ? and id_introducao = ?";
+		$sql = "SELECT * FROM " . $table . " WHERE id_". $table_id1 ." = ? and id_". $table_id2 ." = ?";
 
 		$rs = $GLOBALS['pdo']->prepare($sql);
-		$rs->bindParam(1, $id_usuario);
-		$rs->bindParam(2, $id_introducao);
+		$rs->bindParam(1, $id1);
+		$rs->bindParam(2, $id2);
 
 		try{
 			if($rs->execute()){
-				if ($rs->rowCount() > 0) {
+				if ($rs->rowCount() == 1) {
 					return $rs->fetch(PDO::FETCH_ASSOC);
+				}
+				else if($rs->rowCount() > 1) {
+					return $rs->fetchAll(PDO::FETCH_ASSOC);
 				}
 				else{
 					return null;
@@ -68,7 +71,7 @@
 			
 	}
 
-	function find($table, $id, $table_id){
+	function find($table, $id = null, $table_id){
 
 		$sql = "SELECT * FROM " . $table;
 		

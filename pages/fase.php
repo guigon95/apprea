@@ -3,6 +3,7 @@
     include (HEADER_TEMPLATE);
     include (SIDEBAR_TEMPLATE);
     require_once(ABSPATH.'functions.php');
+    include ("../includes/modal.php");
 
 
      if(!empty($_GET['fase'])){
@@ -31,6 +32,8 @@
      
       <section class="content">
 
+      <!-- Utilizado para pegar a area no jquery -->
+      <input type="hidden" id="areaID" value="<?php echo $rows['id_area'];?>" />
        <?php
 
 
@@ -107,121 +110,42 @@
                             <!-- /.col -->
                           </div>
                           <!-- /.row -->
-                          </form>
+                        </form>
 <?php } ?>
-                </br>
-
-                <p><b>Casos de Teste</b></p>
-                <div class="casos_de_teste">
-                <p>O Teste 1 revela o seguinte defeito: Ao girar o potenciômetro no sentido horário até o fim, um dos LEDs não acende.</p>
-                <div class="box-body">
-              <table id="example1" class="table table-bordered table-hover">
-              <tr>
-                <th colspan="2" align="center">Caso de Teste</th>
-              </tr>
-              <tr>
-                <td><dt>ID</dt></td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td><dt>Objetivo</dt></td>
-                <td>Verificar funcionamento dos LEDs</td>
-              </tr>
-              <tr>
-                <td><dt>Ator</dt></td>
-                <td>Aluno de Engenharia de Software</td>
-              </tr>
-              <tr>
-                <td><dt>Pré-condições</dt></td>
-                <td>Potenciômetro girado no sentido anti-horário até o fim</td>
-              </tr>
-              <tr>
-                <td><dt>Procedimentos (Entradas e saídas)</dt></td>
-                <td>1 – Girar o potenciômetro no sentido horário até o final
-<p>2 – Os LEDs devem acender um a um até que todos estejam acesos representando “volume máximo”</p>
-</td>
-              </tr>
-              <tr>
-                <td><dt>Pós-condições</dt></td>
-                <td>Todos os LEDs acesos</td>
-              </tr>
-            </table>
-        	</div>
-    	   </div>
-
-            <form id="formInput1" role="form">
-                <div class="box-body">
+                
+                
+                <div id="formInput1" class="box-body">
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
+                      <input type="file" id="exampleInputFile1">
 
                       <p class="help-block">Carregue o caso de Teste 1.</p>
                     </div>
                 </div>
-            </form>
 
-
-
-
-            <div class="casos_de_teste">
-            </br>                <p>O Teste 2 revela o seguinte defeito: ao girar o potenciômetro, a sequência de acendimento e apagamento dos LEDs não é obedecida. Alguns LEDs também acendem com brilho mais baixo.</p>
-                <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
-              <tr>
-                <th colspan="2" align="center">Caso de Teste</th>
-              </tr>
-              <tr>
-                <td><dt>ID</dt></td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td><dt>Objetivo</dt></td>
-                <td>Verificar se os LEDs acendem na ordem correta</td>
-              </tr>
-              <tr>
-                <td><dt>Ator</dt></td>
-                <td>Aluno de Engenharia de Software</td>
-              </tr>
-              <tr>
-                <td><dt>Pré-condições</dt></td>
-                <td>Potenciômetro girado no sentido anti-horário até o fim</td>
-              </tr>
-              <tr>
-                <td><dt>Procedimentos (Entradas e saídas)</dt></td>
-                <td><p>1 – Girar o potenciômetro no sentido horário lentamente</p>
-                    <p>2 – Os LEDs devem acender na sequência: verde, amarelo, amarelo e vermelho</p>
-                    <p>3 – Girar o potenciômetro no sentido anti-horário lentamente</p>
-                    <p>4 – Os LEDs devem apagar na sequência: vermelho, amarelo, amarelo e verde</p></td>
-              </tr>
-              <tr>
-                <td><dt>Pós-condições</dt></td>
-                <td>Todos os LEDs apagados</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-
-            <form id="formInput2" role="form">
-                <div class="box-body">
+             
+           
+                <div id="formInput2" class="box-body">
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
+                      <input type="file" id="exampleInputFile2">
 
                       <p class="help-block">Carregue o caso de Teste 2.</p>
                     </div>
                 </div>
-            </form>
-
-
 
     </section>
     <!-- /.content -->
 
         <div align="center" class="timeline-footer">
-            <a href="#button_enviar" id="button_enviar" class="btn btn-primary btn-xs">Enviar Respostas</a>
+          <a id="button_enviar" type="submit" name="submit" class="btn btn-primary btn-xs" data-toggle="modal" href="#modal-default">Enviar Respostas</a>
         </div>
+
+
   </div>                 
           
+
+
   <!-- /.content-wrapper -->
 <?php include(FOOTER_TEMPLATE); ?>
 
@@ -229,25 +153,42 @@
   	var flag = 0;
     $('#button_enviar').click(function(){
     	$(".casos_de_teste").css("display", "block");
+
+
     	$("#formInput1").css("display", "none");
 
     	$("#formInput2").css("display", "none");
 
     	$("#button_enviar").text("Continuar");
 
-    	if(flag == 1)
-    	$("#button_enviar").attr("href", "fases.html");
+      var area = $("#areaID").val();
+
+      if (flag == 0) {
+        alert("ffoi");
+       var formData = {name:"ravi",age:"31"}; //Array 
+ 
+          $.ajax({
+              url : "../setarIntro.php",
+              type: "POST",
+              data : formData,
+              success: function(data, textStatus, jqXHR)
+              {
+                  //data - response from server
+                  alert("ffoi");
+              },
+              error: function (jqXHR, textStatus, errorThrown)
+              {
+                alert("erro");
+              }
+          });
+      }
+    	if(flag == 1){
+    	     $("#button_enviar").attr("href", "fases.php?area="+area);
+
+      }
 
     	flag = 1;
     	
     });
-
-    $("#button_continuar").click(function(){
-    	alert("foi");
-    });
   
-
-
-</script>
-</body>
-</html>
+  </script>
