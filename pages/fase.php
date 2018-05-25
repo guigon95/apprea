@@ -164,7 +164,7 @@
       var area = $("#areaID").val();
 
       if (flag == 0) {
-        alert("ffoi");
+       
        var formData = {name:"ravi",age:"31"}; //Array 
  
           $.ajax({
@@ -174,7 +174,6 @@
               success: function(data, textStatus, jqXHR)
               {
                   //data - response from server
-                  alert("ffoi");
               },
               error: function (jqXHR, textStatus, errorThrown)
               {
