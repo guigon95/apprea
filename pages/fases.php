@@ -8,6 +8,16 @@
    
     if(!empty($_GET['area']))
       $rows = find('fase', $_GET['area'], 'area');
+
+      $rows_introducao = find('introducao', $_GET['area'], 'area');
+
+      $rows_usr_has_intro = find2id('usuario_has_introducao', $_SESSION['id_usuario'], $rows_introducao['id_introducao'], 'usuario', 'introducao');
+
+      if($rows_usr_has_intro['flag_introducao'] == 0 || !empty($_GET['intro'])){
+
+         $post = array('tabela' => 'usuario_has_introducao', 'valor' => 1, 'campo' => 'flag_introducao', 'tabela_id' => 'usuario', 'tabela_id2' => 'introducao');
+          save_item($post, $_SESSION['id_usuario'], $rows_introducao['id_introducao']);
+      }
 ?>
   <!-- =============================================== -->
 

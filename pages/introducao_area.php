@@ -19,8 +19,6 @@
 
             $descricao_introducao = $rows['descricao_introducao']; 
            
-            $post = array('tabela' => 'usuario_has_introducao', 'valor' => 1, 'campo' => 'flag_introducao', 'tabela_id' => 'usuario', 'tabela_id2' => 'introducao');
-            save_item($post, $_SESSION['id_usuario'], $rows['id_introducao']);
         }
         else{
           header("Location: ".BASEURL."pages/fases.php?area=".$rows['id_area']);

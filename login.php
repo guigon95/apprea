@@ -61,16 +61,9 @@
       </div>
     </form>
 
-    <div class="social-auth-links text-center">
-      <p>- OU -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Logar usando o Facebook
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Logar usando
-        Google+</a>
-    </div>
-    <!-- /.social-auth-links -->
 
     <a href="#">Esqueci minha senha</a><br>
-    <a href="register.html" class="text-center">Registrar</a>
+    <a href="pages/register.php" class="text-center">Registrar</a>
 
   </div>
   <!-- /.login-box-body -->
