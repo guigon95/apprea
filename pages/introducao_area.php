@@ -8,16 +8,16 @@
  $rows = null;
  $nome_area = null;
  if(isset($_GET['area']))
-  $rows = find('introducao', $_GET['area'], 'area');
+  $rows = find('area', $_GET['area'], 'area');
 
   if($rows != null){       
-        $rows_usr_has_intro = find2id('usuario_has_introducao', $_SESSION['id_usuario'], $rows['id_introducao'], 'usuario', 'introducao');
+        $rows_usr_has_area = find2id('usuario_has_area', $_SESSION['id_usuario'], $rows['id_area'], 'usuario', 'area');
 
-        if($rows_usr_has_intro['flag_introducao'] == 0 || !empty($_GET['intro'])){
+        if($rows_usr_has_area['flag_introducao'] == 0 || !empty($_GET['intro'])){
             $rows_area = find('area', $rows['id_area'], 'area');
             $nome_area = $rows_area['nome_area'];
 
-            $descricao_introducao = $rows['descricao_introducao']; 
+            $descricao_introducao = $rows_area['descricao_introducao']; 
            
         }
         else{

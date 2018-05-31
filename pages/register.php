@@ -36,30 +36,42 @@
   <div class="register-box-body">
     <p class="login-box-msg">Registrar novo aluno</p>
 
-    <form action="../../index.html" method="post">
+    <form action="asyncPages/registrar.php" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Nome">
+        <input type="text" id="target" name="nome" class="form-control" placeholder="Nome">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Sobrenome">
+        <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="E-mail">
+        <input type="email" name="email" class="form-control" placeholder="E-mail">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Senha">
+        <input type="password" name="senha" class="form-control" placeholder="Senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Confirmar senha">
+        <input type="password"  name="confirmar" class="form-control" placeholder="Confirmar senha">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
+<?php
+      if(isset($_GET['erro'])){
+?>  
+      <div class="form-group has-error">
+          <span class="help-block">
+            <?php if($_GET['erro'] == 1) echo("E-mail já cadastrado."); elseif($_GET['erro'] == 2) echo("Senhas incorretas.")?>
+          </span>
+      </div>
+<?php
+      }
+?>
+
       <div class="row">
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+          <button  id="registrar" class="btn btn-primary btn-block btn-flat">Registrar</button>
         </div>
         <!-- /.col -->
       </div>
@@ -77,13 +89,11 @@
 <!-- iCheck -->
 <script src="/../plugins/iCheck/icheck.min.js"></script>
 <script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
+
+$(document).ready(function () {
+
+      
+});
 </script>
 </body>
 </html>

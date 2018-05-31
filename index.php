@@ -1,11 +1,15 @@
 <?php
-	
+	ob_start();
   require_once ('config.php');  
   include (HEADER_TEMPLATE);
   include (SIDEBAR_TEMPLATE);
   require_once('functions.php');
 
   $rows = find('area', null, null);
+
+  if ($_SESSION['introducao_arduino'] == 0) {
+      header('Location: pages/introducao_arduino.php');
+  }
   
 
 ?>

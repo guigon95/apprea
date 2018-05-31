@@ -5,6 +5,7 @@
       session_destroy();
       header('location:'.BASEURL.'login.php');
     }
+ require_once(ABSPATH.'functions.php');
 
  ?>
 <!DOCTYPE html>
@@ -89,7 +90,7 @@
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" onclick="sair()" class="btn btn-default btn-flat">Sair</a>
+                  <a href="#" class="btn btn-default btn-flat">Sair</a>
                 </div>
               </li>
             </ul>

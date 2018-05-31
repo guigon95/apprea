@@ -71,7 +71,7 @@
 			
 	}
 
-	function find($table, $id = null, $table_id){
+	function find($table, $id = null, $table_id = null){
 
 		$sql = "SELECT * FROM " . $table;
 		
@@ -102,5 +102,4 @@
 				die(error($e, $sql));
 			}
 	}
-
  ?>

@@ -19,6 +19,7 @@ if($stmt->rowCount() == 1){
             $_SESSION['email_usuario'] = $row['email_usuario'];
             $_SESSION['senha_usuario'] = $row['senha_usuario'];
             $_SESSION['nome_usuario'] = $row['nome_usuario'];
+            $_SESSION['introducao_arduino'] = $row['introducao_arduino'];
 
            header('Location: index.php');
         }

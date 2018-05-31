@@ -9,6 +9,7 @@
      if(!empty($_GET['fase'])){
       $rows = find('fase', $_GET['fase'], 'fase');
       $rows_area = find('area', $rows['id_area'], 'area');
+      $rows_fase_has_item = find('fase_has_item', $_GET['fase'], 'fase');
     }
 ?>
   <!-- =============================================== -->
@@ -59,13 +60,19 @@
                 </br>
 
                 <p><b>Itens Utilizados</b></p>
-                <p>1 - Potenciômetro.</p>
-                <p>4 - Resistores.</p>                
-                <p>1 - LED Verde.</p>
-                <p>2 - LEDs Amarelo.</p>
-                <p>1 - LED Vermelho.</p>
-                <p>1 - Protoboard.</p>
+<?php 
+                foreach ($rows_fase_has_item as $key => $item) {
+
+                    $rows_itens = find('item', $item['id_item'], 'item');
+
+?>
+                <p><?php echo($item['quantidade_item'].' - '.$rows_itens['nome_item'].'.')?></p>
+              
+<?php 
+                }
+?>
                 </br> 
+
 
                 <p><b>Esquemático</b></p>
                 <p>Utilize o esquemático abaixo para montar o circuito.</p>
