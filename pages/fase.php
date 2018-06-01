@@ -35,6 +35,7 @@
 
       <!-- Utilizado para pegar a area no jquery -->
       <input type="hidden" id="areaID" value="<?php echo $rows['id_area'];?>" />
+      <input type="hidden" id="numero_fase" value="<?php echo $rows['numero_fase'];?>" />
        <?php
 
 
@@ -126,20 +127,11 @@
                       <label for="exampleInputFile">File input</label>
                       <input type="file" id="exampleInputFile1">
 
-                      <p class="help-block">Carregue o caso de Teste 1.</p>
+                      <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
                     </div>
                 </div>
 
              
-           
-                <div id="formInput2" class="box-body">
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile2">
-
-                      <p class="help-block">Carregue o caso de Teste 2.</p>
-                    </div>
-                </div>
 
     </section>
     <!-- /.content -->
@@ -164,31 +156,32 @@
 
     	$("#formInput1").css("display", "none");
 
-    	$("#formInput2").css("display", "none");
 
     	$("#button_enviar").text("Continuar");
 
       var area = $("#areaID").val();
-
+      alert($("#numero_fase").val());
+      
       if (flag == 0) {
-       
-       var formData = {name:"ravi",age:"31"}; //Array 
- 
-          $.ajax({
-              url : "../setarIntro.php",
-              type: "POST",
-              data : formData,
-              success: function(data, textStatus, jqXHR)
-              {
-                  //data - response from server
-              },
-              error: function (jqXHR, textStatus, errorThrown)
-              {
-                alert("erro");
-              }
-          });
+          
+          
+        $.ajax({
+          url: 'asyncPages/valida_fase.php',
+          method: 'POST',
+          data: {file: 1, numero_fase: $("#numero_fase").val()},
+          beforeSend: function(){
+           // alert('enviando');
+          },
+          success: function(e){
+
+            alert("foi")
+
+          }
+        });
       }
     	if(flag == 1){
+
+
     	     $("#button_enviar").attr("href", "fases.php?area="+area);
 
       }
