@@ -125,7 +125,7 @@
                 <div id="formInput1" class="box-body">
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile1">
+                      <input type="file" id="inputFile">
 
                       <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
                     </div>
@@ -137,7 +137,7 @@
     <!-- /.content -->
 
         <div align="center" class="timeline-footer">
-          <a id="button_enviar" type="submit" name="submit" class="btn btn-primary btn-xs" data-toggle="modal" href="#modal-default">Enviar Respostas</a>
+          <a id="button_enviar" type="submit" class="btn btn-primary btn-xs" data-toggle="modal" href="#modal-default">Enviar Respostas</a>
         </div>
 
 
@@ -160,7 +160,6 @@
     	$("#button_enviar").text("Continuar");
 
       var area = $("#areaID").val();
-      alert($("#numero_fase").val());
       
       if (flag == 0) {
           
@@ -168,14 +167,12 @@
         $.ajax({
           url: 'asyncPages/valida_fase.php',
           method: 'POST',
-          data: {file: 1, numero_fase: $("#numero_fase").val()},
+          data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, numero_fase: $("#numero_fase").val()},
           beforeSend: function(){
-           // alert('enviando');
+            alert(($("#inputFile"))[0].files[0].tmp_name);
           },
           success: function(e){
-
-            alert("foi")
-
+            alert("foi");
           }
         });
       }
