@@ -137,7 +137,7 @@
     <!-- /.content -->
 
         <div align="center" class="timeline-footer">
-          <a id="button_enviar" type="submit" class="btn btn-primary btn-xs" data-toggle="modal" href="#modal-default">Enviar Respostas</a>
+          <a id="button_enviar" type="submit" class="btn btn-primary btn-xs">Enviar Respostas</a>
         </div>
 
 
@@ -151,40 +151,52 @@
 <script>
   	var flag = 0;
     $('#button_enviar').click(function(){
-    	$(".casos_de_teste").css("display", "block");
 
 
-    	$("#formInput1").css("display", "none");
-
-
-    	$("#button_enviar").text("Continuar");
-
-      var area = $("#areaID").val();
-      
-      if (flag == 0) {
-          
-          
-        $.ajax({
-          url: 'asyncPages/valida_fase.php',
-          method: 'POST',
-          data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, numero_fase: $("#numero_fase").val()},
-          beforeSend: function(){
-            alert(($("#inputFile"))[0].files[0].tmp_name);
-          },
-          success: function(e){
-            alert("foi");
-          }
-        });
+      if(($("#inputFile"))[0].files[0] == null ){
+          $("#inputFile").css("border", "solid 2px red");
+  
+        alert("Faça upload das respostas para prosseguir");
       }
-    	if(flag == 1){
+      else{
 
 
-    	     $("#button_enviar").attr("href", "fases.php?area="+area);
+      	$(".casos_de_teste").css("display", "block");
 
-      }
 
-    	flag = 1;
-    	
+      	$("#formInput1").css("display", "none");
+
+
+      	$("#button_enviar").text("Continuar");
+
+        var area = $("#areaID").val();
+        
+        if (flag == 0) {
+            
+            
+          $.ajax({
+            url: 'asyncPages/valida_fase.php',
+            method: 'POST',
+            data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, numero_fase: $("#numero_fase").val()},
+            beforeSend: function(){
+            },
+            success: function(e){
+            }
+          });
+
+          $("#modal-default").modal("show");
+
+        }
+      	if(flag == 1){
+
+
+      	     $("#button_enviar").attr("href", "fases.php?area="+area);
+
+        }
+
+      	flag = 1;
+      	
+    }
     });
   
   </script>
