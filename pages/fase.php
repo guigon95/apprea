@@ -177,8 +177,10 @@
           $.ajax({
             url: 'asyncPages/valida_fase.php',
             method: 'POST',
-            data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, numero_fase: $("#numero_fase").val()},
+            data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, inputFile_type: ($("#inputFile"))[0].files[0].type, numero_fase: $("#numero_fase").val()},
             beforeSend: function(){
+
+              alert(($("#inputFile"))[0].files[0].type);
             },
             success: function(e){
             }

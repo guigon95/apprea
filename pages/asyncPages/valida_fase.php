@@ -11,7 +11,7 @@
 		$fileName = $_POST['inputFile_name'];
 		//$tmpName  = $_POST['inputFile']['tmp_name'];
 		$fileSize = $_POST['inputFile_size'];
-		//$fileType = $_POST['inputFile_type'];
+		$fileType = $_POST['inputFile_type'];
 		 
 		//$fp      = fopen($tmpName, 'r');
 		//$content = fread($fp, filesize($tmpName));
