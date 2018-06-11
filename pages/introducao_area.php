@@ -15,7 +15,7 @@
 
         if($rows_usr_has_area['flag_introducao'] == 0 || !empty($_GET['intro'])){
             $rows_area = find('area', $rows['id_area'], 'area');
-            $nome_area = $rows_area['nome_area'];
+            $nome_area = $rows_area['nome_area']; 
 
             $descricao_introducao = $rows_area['descricao_introducao']; 
            

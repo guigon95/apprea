@@ -36,6 +36,7 @@
       <!-- Utilizado para pegar a area no jquery -->
       <input type="hidden" id="areaID" value="<?php echo $rows['id_area'];?>" />
       <input type="hidden" id="numero_fase" value="<?php echo $rows['numero_fase'];?>" />
+      <input type="hidden" id="id_fase" value="<?php echo $_GET['fase'];?>" />
        <?php
 
 
@@ -119,7 +120,12 @@
                           </div>
                           <!-- /.row -->
                         </form>
-<?php } ?>
+<?php } 
+
+                $rowsUsrHasFase = find2id('usuario_has_fase', $_SESSION['id_usuario'], $_GET['fase'], 'usuario', 'fase');
+                if($rowsUsrHasFase['flag_fase'] < 2){
+
+?>
                 
                 
                 <div id="formInput1" class="box-body">
@@ -130,6 +136,10 @@
                       <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
                     </div>
                 </div>
+<?php 
+                }
+
+?>
 
              
 
@@ -137,7 +147,17 @@
     <!-- /.content -->
 
         <div align="center" class="timeline-footer">
+<?php   if($rowsUsrHasFase['flag_fase'] == 2){ 
+?>  
+        <a href="fases.php?area=<?php echo ($rows['id_area'])?>" class="btn btn-primary btn-xs">Continuar</a>
+<?php     } 
+          else{
+
+?>
           <a id="button_enviar" type="submit" class="btn btn-primary btn-xs">Enviar Respostas</a>
+<?php 
+          }
+?>
         </div>
 
 
@@ -169,18 +189,14 @@
 
       	$("#button_enviar").text("Continuar");
 
-        var area = $("#areaID").val();
         
         if (flag == 0) {
-            
             
           $.ajax({
             url: 'asyncPages/valida_fase.php',
             method: 'POST',
-            data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, inputFile_type: ($("#inputFile"))[0].files[0].type, numero_fase: $("#numero_fase").val()},
+            data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, inputFile_type: ($("#inputFile"))[0].files[0].type, numero_fase: $("#numero_fase").val(), id_fase: $("#id_fase").val()},
             beforeSend: function(){
-
-              alert(($("#inputFile"))[0].files[0].type);
             },
             success: function(e){
             }
@@ -200,5 +216,5 @@
       	
     }
     });
-  
+
   </script>

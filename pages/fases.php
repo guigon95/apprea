@@ -64,17 +64,31 @@
             <div class="icon">
               <i class="fa fa-book"></i>
             </div>
-            <?php if($rows_usr_has_fase['flag_fase'] == 1){ ?>
+<?php 
+            if($rows_usr_has_fase['flag_fase'] > 0){ 
+?>
             <a href="fase.php?fase=<?php echo $value['id_fase']?>" class="small-box-footer">
               Continuar <i class="fa fa-arrow-circle-right"></i>
             </a>
 
-            <?php }else if ($rows_usr_has_fase['flag_fase'] == 0) { ?>
+<?php 
+            }
+            else if ($rows_usr_has_fase['flag_fase'] == 0) { 
+?>
             <a href="fase.php?fase=<?php echo $value['id_fase']?>" class="small-box-footer" style="pointer-events: none;
    cursor: default;">
               Continuar <i class="fa fa-lock"></i>
             </a>
-            <?php } ?>
+<?php
+           }
+           if($rows_usr_has_fase['flag_fase'] == 2) { 
+?>  
+           <a href="fase.php?fase=<?php echo $value['id_fase']?>" class="small-box-footer">
+              Resposta <i class="fa fa-arrow-circle-right"></i>
+            </a>
+<?php 
+          }
+?>
           </div>
          </div>
 

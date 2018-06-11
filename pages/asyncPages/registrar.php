@@ -45,6 +45,18 @@
 				$sql = "update usuario_has_fase set flag_fase = 1 where id_fase = (select id_fase from fase where numero_fase = '1')";
 				$rs = $GLOBALS['pdo']->prepare($sql);
 				$rs->execute();
+
+				$sql = "select * from area";
+				$rs = $GLOBALS['pdo']->prepare($sql);
+				$rs->execute();
+				$rows_fase = $rs->fetchAll(PDO::FETCH_ASSOC);
+
+				foreach ($rows_fase as $key => $value) {
+					
+					$sql = "INSERT INTO usuario_has_area (id_usuario, id_area, flag_introducao) values (". $rows_user['id_usuario']. ", " . $value['id_area'] . ", 0)";
+					$rs = $GLOBALS['pdo']->prepare($sql);
+					$rs->execute();
+				}
 				
 				header('location: ../../login.php');
 			}

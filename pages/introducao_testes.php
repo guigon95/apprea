@@ -107,6 +107,16 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+
+     $.ajax({
+            url: 'asyncPages/valida_testes.php',
+            method: 'POST',
+            data: {valida_testes: 1},
+            beforeSend: function(){
+            },
+            success: function(e){
+            }
+          });
   })
 </script>
 </body>
