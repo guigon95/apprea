@@ -33,10 +33,6 @@
      
       <section class="content">
 
-      <!-- Utilizado para pegar a area no jquery -->
-      <input type="hidden" id="areaID" value="<?php echo $rows['id_area'];?>" />
-      <input type="hidden" id="numero_fase" value="<?php echo $rows['numero_fase'];?>" />
-      <input type="hidden" id="id_fase" value="<?php echo $_GET['fase'];?>" />
        <?php
 
 
@@ -127,15 +123,22 @@
 
 ?>
                 
-                <form action="valida_fase.php" method="POST" >
+                <form id="formUpload" enctype="multipart/form-data" action="asyncPages/valida_fase.php" method="POST" >
                 <div id="formInput1" class="box-body">
                     <div class="form-group">
+
+                      <!-- Utilizado para pegar a area no jquery -->
+                      <input type="hidden" name="id_area" id="id_area" value="<?php echo $rows['id_area'];?>" />
+                      <input type="hidden" name="numero_fase" id="numero_fase" value="<?php echo $rows['numero_fase'];?>" />
+                      <input type="hidden" name="id_fase" id="id_fase" value="<?php echo $_GET['fase'];?>" />
                       <label for="exampleInputFile">File input</label>
-                      <input type="file" name = "inputFile" id="inputFile">
+                      <input type="file" name="inputFile" id="inputFile">
 
                       <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
                     </div>
                 </div>
+
+                <input type="submit" name="inputFile" class="btn btn-primary btn-xs" value="Vai">
               </form>
 <?php 
                 }
@@ -171,13 +174,13 @@
 
 <script>
   	var flag = 0;
+
     $('#button_enviar').click(function(){
 
 
       if(($("#inputFile"))[0].files[0] == null ){
           $("#inputFile").css("border", "solid 2px red");
   
-        alert("Faça upload das respostas para prosseguir");
       }
       else{
 
@@ -190,17 +193,24 @@
 
       	$("#button_enviar").text("Continuar");
 
-        
+        var area = $('#id_area').val();
+
         if (flag == 0) {
-            
+          
+          var formData = new FormData($("#formUpload")[0]);
+
           $.ajax({
             url: 'asyncPages/valida_fase.php',
-            method: 'POST',
-            data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, inputFile_type: ($("#inputFile"))[0].files[0].type, inputFile_tmp_name: ($("#inputFile"))[0].files[0].tmp_name, numero_fase: $("#numero_fase").val(), id_fase: $("#id_fase").val()},
+            type: 'POST',
+            data: formData,
             beforeSend: function(){
+              alert(id_fase);
             },
             success: function(e){
-            }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
           });
 
           $("#modal-default").modal("show");
