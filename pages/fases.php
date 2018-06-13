@@ -83,7 +83,7 @@
            }
            if($rows_usr_has_fase['flag_fase'] == 2) { 
 ?>  
-           <a href="fase.php?fase=<?php echo $value['id_fase']?>" class="small-box-footer">
+           <a href="resposta.php?fase=<?php echo $value['id_fase']?>" class="small-box-footer">
               Resposta <i class="fa fa-arrow-circle-right"></i>
             </a>
 <?php 
