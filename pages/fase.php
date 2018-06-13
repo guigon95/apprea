@@ -127,7 +127,7 @@
 
 ?>
                 
-                
+                <form>
                 <div id="formInput1" class="box-body">
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
@@ -136,6 +136,7 @@
                       <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
                     </div>
                 </div>
+              </form>
 <?php 
                 }
 
@@ -195,7 +196,7 @@
           $.ajax({
             url: 'asyncPages/valida_fase.php',
             method: 'POST',
-            data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, inputFile_type: ($("#inputFile"))[0].files[0].type, numero_fase: $("#numero_fase").val(), id_fase: $("#id_fase").val()},
+            data: {inputFile_name: ($("#inputFile"))[0].files[0].name, inputFile_size: ($("#inputFile"))[0].files[0].size, inputFile_type: ($("#inputFile"))[0].files[0].type, inputFile_tmp_name: ($("#inputFile"))[0].files[0].tmp_name, numero_fase: $("#numero_fase").val(), id_fase: $("#id_fase").val()},
             beforeSend: function(){
             },
             success: function(e){
