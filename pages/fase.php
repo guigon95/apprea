@@ -127,11 +127,11 @@
 
 ?>
                 
-                <form>
+                <form action="valida_fase.php" method="POST" >
                 <div id="formInput1" class="box-body">
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>
-                      <input type="file" id="inputFile">
+                      <input type="file" name = "inputFile" id="inputFile">
 
                       <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
                     </div>

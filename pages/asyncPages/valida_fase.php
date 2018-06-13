@@ -13,7 +13,7 @@
 		$fileSize = $_POST['inputFile_size'];
 		$fileType = $_POST['inputFile_type'];
 
-		move_uploaded_file($_FILES['inputFile_tmp_name'], "www/htdocs/apprea/upload");
+		move_uploaded_file($_FILES['inputFile_tmp_name'], "https://apprea.herokuapp.com/upload");
 
 		 
 		//$fp      = fopen($tmpName, 'r');
