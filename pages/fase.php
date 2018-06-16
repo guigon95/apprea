@@ -203,7 +203,6 @@
             type: 'POST',
             data: formData,
             beforeSend: function(){
-              alert(id_fase);
             },
             success: function(e){
             },
@@ -213,7 +212,7 @@
           });
 
           var numero_fase = $('#numero_fase').val();
-           var resposta = $('#resposta_fase').attr('value');
+          var resposta = $('#resposta_fase').attr('value');
 
           $('#modal-resposta .modal-title').html('Resposta - Fase '+numero_fase);
           $('#modal-resposta #embed').attr('src', '<?php echo(BASEURL)?>pages/respostas/'+resposta);
