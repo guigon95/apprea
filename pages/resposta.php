@@ -3,7 +3,7 @@
     include (HEADER_TEMPLATE);
     include (SIDEBAR_TEMPLATE);
     require_once(ABSPATH.'functions.php');
-    include ("../includes/modal.php");
+    include ("../../../includes/modal.php");
 
 
      if(!empty($_GET['fase'])){
@@ -32,138 +32,21 @@
 
      
       <section class="content">
-
-      <!-- Utilizado para pegar a area no jquery -->
-      <input type="hidden" id="areaID" value="<?php echo $rows['id_area'];?>" />
-      <input type="hidden" id="numero_fase" value="<?php echo $rows['numero_fase'];?>" />
-      <input type="hidden" id="id_fase" value="<?php echo $_GET['fase'];?>" />
-       <?php
-
-
-              
-            if($rows != null){
-        ?>
-            <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Fase <?php echo $rows['numero_fase'];?> - <?php echo $rows['nome_fase'];?> - <?php echo $rows_area['nome_area'];?></h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <form role="form">
-              <div class="attachment-text">
-
-                
-                <p><b>Objetivo</b></p>
-                <p><?php echo $rows['objetivo_fase']?></p>
-
-
-                <p><b>Descrição da Fase</b></p>
-                <p><?php echo $rows['descricao_fase']?></p>
-                </br>
-
-                <p><b>Itens Utilizados</b></p>
-<?php 
-                foreach ($rows_fase_has_item as $key => $item) {
-
-                    $rows_itens = find('item', $item['id_item'], 'item');
-
-?>
-                <p><?php echo($item['quantidade_item'].' - '.$rows_itens['nome_item'].'.')?></p>
-              
-<?php 
-                }
-?>
-                </br> 
-
-
-                <p><b>Esquemático</b></p>
-                <p>Utilize o esquemático abaixo para montar o circuito.</p>
-                <div align="center" class="ampliar centralizar_acima">
-                 <img  src="<?php echo $rows['esquematico_fase'] ?>" width="400" alt="Photo">
-                </div>
-               	</br>
-            	</br>
-
-                <p><b>Código</b></p>
-
-                <div class="row" style="margin-top: 10px;">
-                  <div class="col-md-12">
-                    <div class="box box-solid">
-                      
-                      <div class="box-body">
-                            <pre style="font-weight: 600;">
-
-<?php 
-
-      if(!empty($rows['codigo_fase'])){
-        $ponteiro = fopen ($rows['codigo_fase'],"r");
-
-        while (!feof ($ponteiro)) {
-          $linha = fgets($ponteiro, 4096);
-          echo $linha;
-        }
-
-        fclose ($ponteiro);
-
-     }
-     else
-        echo "Nenhum código no banco de dados";
-
-?>
-                                      </pre>
-                                </div>
-                                <!-- /.box-body -->
-                              </div>
-                              <!-- /.box -->
-                            </div>
-                            <!-- /.col -->
-                          </div>
-                          <!-- /.row -->
-                        </form>
-<?php } 
-
-                $rowsUsrHasFase = find2id('usuario_has_fase', $_SESSION['id_usuario'], $_GET['fase'], 'usuario', 'fase');
-                if($rowsUsrHasFase['flag_fase'] < 2){
-
-?>
-                
-                
-                <div id="formInput1" class="box-body">
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="inputFile">
-
-                      <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
-                    </div>
-                </div>
-<?php 
-                }
-
-?>
-
-             
+<embed src="http://localhost/apprea/pages/asyncPages/respostas/LE1.pdf"
+                               frameborder="0" width="100%" height="400px">
+        </section> 
 
     </section>
     <!-- /.content -->
 
         <div align="center" class="timeline-footer">
-<?php   if($rowsUsrHasFase['flag_fase'] == 2){ 
-?>  
-        <a href="fases.php?area=<?php echo ($rows['id_area'])?>" class="btn btn-primary btn-xs">Continuar</a>
-<?php     } 
-          else{
 
-?>
-          <a id="button_enviar" type="submit" class="btn btn-primary btn-xs">Enviar Respostas</a>
-<?php 
-          }
-?>
         </div>
 
 
   </div>                 
           
-
+</div>
 
   <!-- /.content-wrapper -->
 <?php include(FOOTER_TEMPLATE); ?>

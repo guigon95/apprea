@@ -19,21 +19,12 @@
 		$now = new DateTime();
 		//$now->format('Y-m-d H:i:s');    // MySQL datetime format
 		$dataAtual = $now->getTimestamp();  
-		move_uploaded_file($_FILES['inputFile']['tmp_name'], "upload/".$dataAtual.$_SESSION['id_usuario'].$_SESSION['nome_usuario'].$_FILES['inputFile']['name']);
+		$nomeArquivo = $dataAtual.$_SESSION['id_usuario'].$_SESSION['nome_usuario'].$_FILES['inputFile']['name'];
+		move_uploaded_file($_FILES['inputFile']['tmp_name'], "upload/".$nomeArquivo);
 
-		 
-		//$fp      = fopen($tmpName, 'r');
-		//$content = fread($fp, filesize($tmpName));
-		///$content = addslashes($content);
-		//fclose($fp);
-		 
-		//if(!get_magic_quotes_gpc())
-		//{
-		//    $fileName = addslashes($fileName);
-		//}
+
 		
-		$id_usuario = 2/
-		$sql = "update usuario_has_fase set flag_fase = 2 where id_usuario = ".$_SESSION['id_usuario']." and id_fase = ". $_POST['id_fase'];
+		$sql = "update usuario_has_fase set flag_fase = 2, nome_arquivo = '".$nomeArquivo."', tipo = '".$_FILES['inputFile']['type']."', tamanho ='".$_FILES['inputFile']['size']."' where id_usuario = ".$_SESSION['id_usuario']." and id_fase = ". $_POST['id_fase'];
 		$rs = $GLOBALS['pdo']->prepare($sql);
 		$rs->execute();	
 

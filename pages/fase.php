@@ -213,7 +213,7 @@
             processData: false
           });
 
-          $("#modal-default").modal("show");
+          $("#modal-resposta").modal("show");
 
         }
       	if(flag == 1){

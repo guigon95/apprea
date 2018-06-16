@@ -4,6 +4,7 @@
     include (HEADER_TEMPLATE);
     include (SIDEBAR_TEMPLATE);
     require_once(ABSPATH.'functions.php');
+    include ("../includes/modal.php");
 
    
     if(!empty($_GET['area']))
@@ -58,6 +59,8 @@
           <div class="small-box bg-aqua">
             <div class="inner">
               <h3>Fase <?php echo $value['numero_fase']; ?></h3>
+               <input type="hidden" name="numero_fase" id="numero_fase" value="<?php echo $value['numero_fase'];?>" />
+               <input type="hidden" name="resposta_fase" id="resposta_fase" value="<?php echo $value['resposta_fase'];?>" />
 
               <p><?php echo $value['nome_fase']?></p>
             </div>
@@ -83,7 +86,7 @@
            }
            if($rows_usr_has_fase['flag_fase'] == 2) { 
 ?>  
-           <a href="resposta.php?fase=<?php echo $value['id_fase']?>" target="_blank" class="small-box-footer">
+           <a href="#" id="<?php echo ($value['resposta_fase'])?>" class="small-box-footer resposta">
               Visualizar Resposta <i class="fa fa-eye"></i>
             </a>
 <?php 
@@ -109,5 +112,19 @@
   <!-- /.content-wrapper -->
 
 <?php include(FOOTER_TEMPLATE); ?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+     $(".resposta").click(function(){
+     
+                var numero_fase = $('#numero_fase').val();
+                var resposta = $(this).attr('id');
+                alert(resposta);
+                $('#modal-resposta .modal-title').html('Resposta - Fase '+numero_fase);
+                $('#modal-resposta #embed').attr('src', '<?php BASEURL?>pages/respostas/'+resposta);
+                $('#modal-resposta').modal('show'); 
+            });
+    });
+</script>
 </body>
 </html>
