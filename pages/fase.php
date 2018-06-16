@@ -131,14 +131,13 @@
                       <input type="hidden" name="id_area" id="id_area" value="<?php echo $rows['id_area'];?>" />
                       <input type="hidden" name="numero_fase" id="numero_fase" value="<?php echo $rows['numero_fase'];?>" />
                       <input type="hidden" name="id_fase" id="id_fase" value="<?php echo $_GET['fase'];?>" />
+                       <input type="hidden" name="resposta_fase" id="resposta_fase" value="<?php echo $rowsUsrHasFase['resposta_fase'];?>" />
                       <label for="exampleInputFile">File input</label>
                       <input type="file" name="inputFile" id="inputFile">
 
                       <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
                     </div>
                 </div>
-
-                <input type="submit" name="inputFile" class="btn btn-primary btn-xs" value="Vai">
               </form>
 <?php 
                 }
@@ -213,6 +212,11 @@
             processData: false
           });
 
+          var numero_fase = $('#numero_fase').val();
+           var resposta = $('#resposta_fase').attr('value');
+
+          $('#modal-resposta .modal-title').html('Resposta - Fase '+numero_fase);
+          $('#modal-resposta #embed').attr('src', '<?php echo(BASEURL)?>pages/respostas/'+resposta);
           $("#modal-resposta").modal("show");
 
         }
