@@ -130,8 +130,9 @@
                       <!-- Utilizado para pegar a area no jquery -->
                       <input type="hidden" name="id_area" id="id_area" value="<?php echo $rows['id_area'];?>" />
                       <input type="hidden" name="numero_fase" id="numero_fase" value="<?php echo $rows['numero_fase'];?>" />
-                      <input type="hidden" name="id_fase" id="id_fase" value="<?php echo $_GET['fase'];?>" />
-                       <input type="hidden" name="resposta_fase" id="resposta_fase" value="<?php echo $rowsUsrHasFase['resposta_fase'];?>" />
+                      <input type="hidden" name="id_fase" id="idfase" value="<?php echo $rows['id_fase'];?>" />
+                      <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $_SESSION['id_usuario'];?>" />
+                      <input type="hidden" name="resposta_fase" id="resposta_fase" value="<?php echo $rows['resposta_fase'];?>" />
                       <label for="exampleInputFile">File input</label>
                       <input type="file" name="inputFile" id="inputFile">
 
@@ -193,7 +194,7 @@
       	$("#button_enviar").text("Continuar");
 
         var area = $('#id_area').val();
-
+        
         if (flag == 0) {
           
           var formData = new FormData($("#formUpload")[0]);
@@ -212,10 +213,12 @@
           });
 
           var numero_fase = $('#numero_fase').val();
-          var resposta = $('#resposta_fase').attr('value');
-
+          var resposta = $('#resposta_fase').val();
+          var id_fase = $('#idfase').val();
+          
           $('#modal-resposta .modal-title').html('Resposta - Fase '+numero_fase);
           $('#modal-resposta #embed').attr('src', '<?php echo(BASEURL)?>pages/respostas/'+resposta);
+          $('#modal-resposta #id_fase').attr('value', id_fase);
           $("#modal-resposta").modal("show");
 
         }

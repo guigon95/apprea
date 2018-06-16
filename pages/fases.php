@@ -120,6 +120,8 @@
                 var numero_fase = $('#numero_fase').val();
                 var resposta = $(this).attr('id');
                 $('#modal-resposta .modal-title').html('Resposta - Fase '+numero_fase);
+                $('#modal-resposta .pgtPorcentagem').hide();
+                $("#modal-resposta input[name='porcentagem']").attr('id', 'porc')
                 $('#modal-resposta #embed').attr('src', '<?php echo(BASEURL)?>pages/respostas/'+resposta);
                 $('#modal-resposta').modal('show'); 
             });

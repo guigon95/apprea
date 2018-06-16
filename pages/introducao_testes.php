@@ -6,15 +6,14 @@
   require_once(ABSPATH.'functions.php');
 
   
-  if(isset($_GET['area']))
-  $id_area = $_GET['area'];
+      if(isset($_GET['area']))
+      $id_area = $_GET['area'];
+
+      $rows = find('teste', $id_area, 'area');
+    
   
 
 ?>
-<script type="text/javascript">
-  
-</script>
-
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -34,43 +33,55 @@
     <section class="content">
 
      
-              
+
 
             <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Questão 1 </h3>
+              <h3 class="box-title">Testes </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <form role="form">
+<?php 
+          if($rows!=null){
+
+                     foreach ($rows as $row => $value) {
+
+                        $alternativas = explode(";", $value['alternativa_teste']);
+?>
               <div>
-              Em relação aos tipos de teste de software selecione a alternativa correta.
+              <?php echo($value['descricao_teste']); ?>
               </div>
                 <!-- radio -->
                 <div class="form-group">
+<?php
+                foreach ($alternativas as $alternativasValue){
+
+?>
+                
+      
                   <div class="radio">
                     <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                      Option 1
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="<?php echo($alternativasValue) ?>">
+                      <?php echo($alternativasValue) ?>
                     </label>
                   </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option 2
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                      Option 3
-                    </label>
-                  </div>
+                  <?php } ?>
+                
                 </div>
               </form>
-            </div>
+           
 
-                 
+<?php
+
+                  }
+        }
+        else{
+          echo("Nenhuma alternativa cadastrada");
+        }
+?>
+          
+           </div>       
      
 
     </section>
