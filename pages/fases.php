@@ -121,7 +121,7 @@
                 var resposta = $(this).attr('id');
                 alert(resposta);
                 $('#modal-resposta .modal-title').html('Resposta - Fase '+numero_fase);
-                $('#modal-resposta #embed').attr('src', '<?php BASEURL?>pages/respostas/'+resposta);
+                $('#modal-resposta #embed').attr('src', '<?php echo(BASEURL)?>pages/respostas/'+resposta);
                 $('#modal-resposta').modal('show'); 
             });
     });
