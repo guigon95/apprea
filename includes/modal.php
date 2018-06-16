@@ -14,7 +14,7 @@
               <form id="formPorcentagem" method="POST" >
                 <div class="pgtPorcentagem" align="center">
                   <p>Qual a sua porcentagem de acerto na questão?</p>
-                  <input name="porcentagem" id="porcentagem" placeholder="50%">
+                  <input name="porcentagem" class="porcentagem" id="porcentagem" placeholder="50%">
                   <input type="hidden" name="id_fase" id="id_fase" value="" />
                 </div>
               </form>
