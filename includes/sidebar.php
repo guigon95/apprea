@@ -36,8 +36,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo BASEURL?>pages/introducao_arduino.php"><i class="fa fa-circle-o"></i>Arduino</a></li>
-            <li><a href="<?php echo BASEURL?>pages/introducao_area.php?area=22&intro=100"><i class="fa fa-circle-o"></i>Teste de Software</a></li>
-            <li><a href="<?php echo BASEURL?>pages/introducao_area.php?area=32&intro=100""><i class="fa fa-circle-o"></i>Manutenção de Software</a></li>
+            <li><a href="<?php echo BASEURL?>pages/introducao_area.php?area=12&intro=100"><i class="fa fa-circle-o"></i>Teste de Software</a></li>
+            <li><a href="<?php echo BASEURL?>pages/introducao_area.php?area=22&intro=100""><i class="fa fa-circle-o"></i>Manutenção de Software</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Processo de Software</a></li>
           </ul>
         </li>
