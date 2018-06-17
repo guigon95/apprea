@@ -44,10 +44,9 @@
 
       <?php 
       	if($rows != null){
-                
                 foreach ($rows as $row => $value) {
-
-                $rows_usr_has_fase = find2id('usuario_has_fase', $_SESSION['id_usuario'], $value['id_fase'], 'usuario', 'fase');
+               
+                  $rows_usr_has_fase = find2id('usuario_has_fase', $_SESSION['id_usuario'], $value['id_fase'], 'usuario', 'fase');
 
           
                 

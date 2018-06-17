@@ -42,16 +42,24 @@
 					$rs->execute();
 				}
 
-				$sql = "update usuario_has_fase set flag_fase = 1 where id_fase = (select id_fase from fase where numero_fase = '1')";
-				$rs = $GLOBALS['pdo']->prepare($sql);
-				$rs->execute();
+				$sql = "select * from fase where numero_fase = '1'";
+				$rsIdFase = $GLOBALS['pdo']->prepare($sql);
+				$rsIdFase->execute();
+
+				while ($rowsIdFase = $rsIdFase->fetch(PDO::FETCH_ASSOC)) {
+					$sql = "update usuario_has_fase set flag_fase = 1 where id_usuario = ".$rows_user['id_usuario']." and id_fase = ".$rowsIdFase['id_fase'];
+					$rs = $GLOBALS['pdo']->prepare($sql);
+					$rs->execute();
+				}
+				
 
 				$sql = "select * from area";
 				$rs = $GLOBALS['pdo']->prepare($sql);
 				$rs->execute();
-				$rows_fase = $rs->fetchAll(PDO::FETCH_ASSOC);
+				//$rows_fase = $rs->fetchAll(PDO::FETCH_ASSOC);
+				$rows_area = $rs->fetchAll(PDO::FETCH_ASSOC);
 
-				foreach ($rows_fase as $key => $value) {
+				foreach ($rows_area as $key => $value) {
 					
 					$sql = "INSERT INTO usuario_has_area (id_usuario, id_area, flag_introducao) values (". $rows_user['id_usuario']. ", " . $value['id_area'] . ", 0)";
 					$rs = $GLOBALS['pdo']->prepare($sql);
