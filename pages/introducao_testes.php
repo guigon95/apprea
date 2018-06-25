@@ -10,7 +10,8 @@
       $id_area = $_GET['area'];
 
       $rows = find('teste', $id_area, 'area');
-    
+      
+      $rowArea = find('usuario_has_area', $id_area, 'area');
   
 
 ?>
@@ -38,6 +39,8 @@
             <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Testes </h3>
+              <input type="hidden" name="flag_introducao" id="flag_introducao" value="<?php echo $rowArea['flag_introducao'];?>" />
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -119,15 +122,20 @@
   $(document).ready(function () {
     $('.sidebar-menu').tree()
 
-     $.ajax({
-            url: 'asyncPages/valida_testes.php',
-            method: 'POST',
-            data: {valida_testes: 1},
-            beforeSend: function(){
-            },
-            success: function(e){
-            }
-          });
+    var flag_introducao = $('#flag_introducao').val();
+
+    if(flag_introducao == 0){
+       $.ajax({
+              url: 'asyncPages/valida_testes.php',
+              method: 'POST',
+              data: {valida_testes: 1},
+              beforeSend: function(){
+              },
+              success: function(e){
+              }
+            });
+    }
+    
   })
 </script>
 </body>
