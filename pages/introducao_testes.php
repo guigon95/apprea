@@ -12,6 +12,8 @@
       $rows = find('teste', $id_area, 'area');
       
       $rowArea = find('usuario_has_area', $id_area, 'area');
+
+
   
 
 ?>
@@ -39,7 +41,10 @@
             <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Testes </h3>
-              <input type="hidden" name="flag_introducao" id="flag_introducao" value="<?php echo $rowArea['flag_introducao'];?>" />
+
+
+              <input type="hidden" name="flag_introducao" id="flag_introducao" value="<?php echo $rowArea[0]['flag_introducao'];?>" />
+              <input type="hidden" name="id_area" id="id_area" value="<?php echo $id_area?>" />
 
             </div>
             <!-- /.box-header -->
@@ -91,7 +96,7 @@
     <!-- /.content -->
 
         <div align="center" class="timeline-footer">
-            <a href="fases.php?area=<?php echo $id_area ?>" class="btn btn-primary btn-xs">Continuar</a>
+            <button id="button_continuar" class="btn btn-primary btn-xs">Continuar</button>
         </div>
   </div>
   <!-- /.content-wrapper -->
@@ -119,24 +124,29 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
+   
+    $('#button_continuar').click(function(){
+
 
     var flag_introducao = $('#flag_introducao').val();
+    var id_area = $('#id_area').val();
 
-    if(flag_introducao == 0){
-       $.ajax({
-              url: 'asyncPages/valida_testes.php',
-              method: 'POST',
-              data: {valida_testes: 1},
-              beforeSend: function(){
-              },
-              success: function(e){
-              }
-            });
-    }
-    
-  })
+      if(flag_introducao == 0){
+         $.ajax({
+                url: 'asyncPages/valida_testes.php',
+                method: 'POST',
+                data: {valida_testes: 1},
+                beforeSend: function(){
+                },
+                success: function(e){
+                  document.location = "fases.php?area="+id_area;
+                }
+              });
+      }
+      else {
+          document.location = "fases.php?area="+id_area;
+      }
+    })
 </script>
 </body>
 </html>
