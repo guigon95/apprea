@@ -46,6 +46,7 @@
               <input type="hidden" name="flag_introducao" id="flag_introducao" value="<?php echo $rowArea[0]['flag_introducao'];?>" />
               <input type="hidden" name="id_area" id="id_area" value="<?php echo $id_area?>" />
 
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -53,48 +54,51 @@
 <?php 
           if($rows!=null){
 
-                     foreach ($rows as $row => $value) {
+              $contRadio = 0;
+              foreach ($rows as $row => $value) {
 
                         $alternativas = explode(";", $value['alternativa_teste']);
 ?>
+              <input type="hidden" id="resposta_teste<?php echo($contRadio)?>" value="<?php echo $value['resposta_teste']?>" />
               <div>
               <?php echo($value['descricao_teste']); ?>
               </div>
                 <!-- radio -->
                 <div class="form-group">
 <?php
+                
+                $cont = 0;
                 foreach ($alternativas as $alternativasValue){
 
+
 ?>
-                
-      
                   <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="<?php echo($alternativasValue) ?>">
+                    <label class="<?php echo($alternativasValue)?>">
+                     <input type="radio" name="radioGroup<?php echo($contRadio)?>" value="<?php echo($alternativasValue) ?>">
                       <?php echo($alternativasValue) ?>
                     </label>
                   </div>
                   <?php } ?>
-                
+                  
+
                 </div>
               </form>
            
 
 <?php
-
+             $contRadio++;
                   }
+
         }
         else{
           echo("Nenhuma alternativa cadastrada");
         }
 ?>
           
-           </div>       
-     
-
+           </div>    
     </section>
     <!-- /.content -->
-
+        <input type="hidden" name="iontRadio" id="contRadio" value="<?php echo $contRadio?>" />
         <div align="center" class="timeline-footer">
             <button id="button_continuar" class="btn btn-primary btn-xs">Continuar</button>
         </div>
@@ -130,6 +134,25 @@
 
     var flag_introducao = $('#flag_introducao').val();
     var id_area = $('#id_area').val();
+    var contRadio = $('#contRadio').val();
+
+    var i = 0;
+    for(i = 0; i<contRadio;i++){
+        if(!$("input:radio[name='radioGroup"+i+"']:checked").val()){
+          alert("Selecione todas as alternativas");
+        }
+        else if($("input:radio[name='radioGroup"+i+"']:checked").val() == $('#resposta_teste'+i).val()){
+          alert($('#resposta_teste'+i).val());
+          $("."+$('#resposta_teste'+i).val()).css("color", "green").css("font-weight", "bold");
+
+        }
+        else if($("input:radio[name='radioGroup"+i+"']:checked").val() != $('#resposta_teste'+i).val()){
+          $("."+$("input:radio[name='radioGroup"+i+"']:checked").val()).css("color", "red").css("font-weight", "bold");
+        }
+    }
+
+    
+
 
       if(flag_introducao == 0){
          $.ajax({
@@ -144,7 +167,7 @@
               });
       }
       else {
-          document.location = "fases.php?area="+id_area;
+          //document.location = "fases.php?area="+id_area;
       }
     })
 </script>
