@@ -17,6 +17,14 @@
   
 
 ?>
+
+<style type="text/css">
+  
+  .classNormal{
+    color: blue;
+  }
+
+</style>
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -67,16 +75,18 @@
                 <div class="form-group">
 <?php
                 
-                $cont = 0;
+                
                 foreach ($alternativas as $alternativasValue){
 
 
 ?>
                   <div class="radio">
-                    <label class="<?php echo($alternativasValue)?>">
-                     <input type="radio" name="radioGroup<?php echo($contRadio)?>" value="<?php echo($alternativasValue) ?>">
-                      <?php echo($alternativasValue) ?>
-                    </label>
+                    <div class="classe<?php echo($contRadio) ?>">
+                      <label name="<?php echo($alternativasValue) ?>">
+                       <input type="radio" name="radioGroup<?php echo($contRadio)?>" value="<?php echo($alternativasValue) ?>">
+                        <?php echo($alternativasValue) ?>
+                      </label>
+                    </div>
                   </div>
                   <?php } ?>
                   
@@ -132,6 +142,7 @@
     $('#button_continuar').click(function(){
 
 
+
     var flag_introducao = $('#flag_introducao').val();
     var id_area = $('#id_area').val();
     var contRadio = $('#contRadio').val();
@@ -140,35 +151,51 @@
     for(i = 0; i<contRadio;i++){
         if(!$("input:radio[name='radioGroup"+i+"']:checked").val()){
           alert("Selecione todas as alternativas");
+          return;
         }
         else if($("input:radio[name='radioGroup"+i+"']:checked").val() == $('#resposta_teste'+i).val()){
-          alert($('#resposta_teste'+i).val());
-          $("."+$('#resposta_teste'+i).val()).css("color", "green").css("font-weight", "bold");
+          $("label[name='"+$('#resposta_teste'+i).val()+"']").css("color", "green").css("font-weight", "bold");
+        }
+        else if($("input:radio[name='radioGroup"+i+"']:checked").val() !=  $('#resposta_teste'+i).val()){
+          $("label[name='"+$("input:radio[name='radioGroup"+i+"']:checked").val()+"']").css("color", "red").css("font-weight", "bold");
+        }
 
-        }
-        else if($("input:radio[name='radioGroup"+i+"']:checked").val() != $('#resposta_teste'+i).val()){
-          $("."+$("input:radio[name='radioGroup"+i+"']:checked").val()).css("color", "red").css("font-weight", "bold");
-        }
     }
 
     
+    for(i = 0; i<contRadio;i++){
 
+        if($("input:radio[name='radioGroup"+i+"']:checked").val() != $('#resposta_teste'+i).val()){
+          alert("Todas as alternativas deve estar corretas");
+          return; 
+        }
+        else if(i+1 == contRadio){
 
-      if(flag_introducao == 0){
-         $.ajax({
-                url: 'asyncPages/valida_testes.php',
-                method: 'POST',
-                data: {valida_testes: 1},
-                beforeSend: function(){
-                },
-                success: function(e){
-                  document.location = "fases.php?area="+id_area;
-                }
-              });
-      }
-      else {
-          //document.location = "fases.php?area="+id_area;
-      }
+          if(flag_introducao == 0){
+               $.ajax({
+                      url: 'asyncPages/valida_testes.php',
+                      method: 'POST',
+                      data: {valida_testes: 1},
+                      beforeSend: function(){
+                      },
+                      success: function(e){
+                        document.location = "fases.php?area="+id_area;
+                      }
+                    });
+              }
+              else {
+                document.location = "fases.php?area="+id_area;
+              }
+          }
+    }
+
+      
+    })
+
+    $('input:radio').click(function(){
+      
+       $(this).parents("").find(".classe"+$(this).attr('name').charAt($(this).attr('name').length-1)).children().css("color", "").css("font-weight", "normal");
+
     })
 </script>
 </body>
