@@ -166,7 +166,7 @@
     for(i = 0; i<contRadio;i++){
 
         if($("input:radio[name='radioGroup"+i+"']:checked").val() != $('#resposta_teste'+i).val()){
-          alert("Todas as alternativas deve estar corretas");
+          alert("Todas as alternativas devem estar corretas");
           return; 
         }
         else if(i+1 == contRadio){
