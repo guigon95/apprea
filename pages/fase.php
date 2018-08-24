@@ -216,6 +216,9 @@
           var resposta = $('#resposta_fase').val();
           var id_fase = $('#idfase').val();
 
+          alert(numero_fase);
+          alert(area);
+
           $('#modal-resposta .modal-title').html('Resposta - Fase '+numero_fase);
           $('#modal-resposta #embed').attr('src', '<?php echo(BASEURL)?>pages/respostas/'+resposta);
           $('#modal-resposta #id_fase').attr('value', id_fase);
