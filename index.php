@@ -35,7 +35,7 @@
       <?php if($rows != null){
                 
                 foreach ($rows as $row => $value) {
-
+                        if($value['nome_area'] != 'introducao'){
       ?>
        <div class="row">
 
@@ -60,6 +60,7 @@
       <!-- /.row -->
 
       <?php 
+                       }
                 } //end foreach
               }//end if ?>
 

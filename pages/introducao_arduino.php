@@ -204,19 +204,8 @@ if (EstadoBotao2 == HIGH){
   $('#button_continuar').click(function(){
 
 
-    $.ajax({
-      url: 'asyncPages/flag_intro_arduino.php',
-      method: 'POST',
-      data: {valor: 1},
-      beforeSend: function(){
-       // alert('enviando');
-      },
-      success: function(e){
-       // alert('funcionou');
-       $(location).attr('href', '../index.php');
+    document.location = "introducao_testes.php?area=42&flag_intro_arduino=1";
 
-      }
-    });
   });
 
 })

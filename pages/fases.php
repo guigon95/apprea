@@ -27,7 +27,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Teste de Sotfware
+        <?php echo $rows_area['nome_area'];?>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i> Início</a></li>

@@ -9,6 +9,7 @@
       if(isset($_GET['area']))
       $id_area = $_GET['area'];
 
+
       $rows = find('teste', $id_area, 'area');
       
       $rowArea = find('usuario_has_area', $id_area, 'area');
@@ -53,6 +54,8 @@
 
               <input type="hidden" name="flag_introducao" id="flag_introducao" value="<?php echo $rowArea[0]['flag_introducao'];?>" />
               <input type="hidden" name="id_area" id="id_area" value="<?php echo $id_area?>" />
+              <input type="hidden" name="flag_intro_arduino" id="flag_intro_arduino" value="<?php echo $_GET['flag_intro_arduino']?>" />
+
 
 
             </div>
@@ -144,6 +147,7 @@
 
 
     var flag_introducao = $('#flag_introducao').val();
+    var flag_intro_arduino = $('#flag_intro_arduino').val();
     var id_area = $('#id_area').val();
     var contRadio = $('#contRadio').val();
 
@@ -171,7 +175,7 @@
         }
         else if(i+1 == contRadio){
 
-          if(flag_introducao == 0){
+          if(flag_introducao == 0 && flag_intro_arduino == 0){
                $.ajax({
                       url: 'asyncPages/valida_testes.php',
                       method: 'POST',
@@ -183,9 +187,27 @@
                       }
                     });
               }
-              else {
+              else if(flag_intro_arduino == 1){
+
+                $.ajax({
+                    url: 'asyncPages/flag_intro_arduino.php',
+                    method: 'POST',
+                    data: {valor: 1},
+                    beforeSend: function(){
+                     // alert('enviando');
+                    },
+                    success: function(e){
+                     // alert('funcionou');
+                     $(location).attr('href', '../index.php');
+
+                    }
+                  });
+
+              }
+              else{
                 document.location = "fases.php?area="+id_area;
               }
+
           }
     }
 
