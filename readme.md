@@ -1,4 +1,4 @@
-**Recursos Educacionais Abertos**
+**Recursos Educacionais Abertos - UTFPR-CP 2018**
 
 **Projeto:** Boas práticas de Engenharia de Software em disciplinas introdutórias de programação utilizando a plataforma Arduino
 
