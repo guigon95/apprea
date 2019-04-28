@@ -102,4 +102,32 @@
 				die(error($e, $sql));
 			}
 	}
+
+
+
+	function findRanking($table){
+
+		$sql = "SELECT * FROM " . $table . " t ORDER BY t.id_patente DESC";
+		
+
+		$rs = $GLOBALS['pdo']->prepare($sql);
+		
+		
+		try{
+
+			if ($rs->execute()) {
+				if($rs->rowCount() > 1){
+						return $rs->fetchAll();
+				}
+				elseif($rs->rowCount() == 1){
+						return $rs->fetch(PDO::FETCH_ASSOC);
+				}
+				else{
+					return null;
+				}
+			}
+		} catch (PDOException $e) {
+				die(error($e, $sql));
+			}
+	}
  ?>

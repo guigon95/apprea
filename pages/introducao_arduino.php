@@ -13,7 +13,7 @@
         Introdução ao Arduino
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../index.html"><i class="fa fa-dashboard"></i> Início</a></li>
+        <li><a href="../index.php"><i class="fa fa-dashboard"></i>Início</a></li>
         <li class="active">Introdução ao arduino</li>
       </ol>
     </section>

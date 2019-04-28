@@ -24,6 +24,10 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+  <?php
+
+
+  ?>
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -36,17 +40,31 @@
   <div class="login-box-body">
     <p class="login-box-msg">Logue-se para iniciar sua sessão</p>
 
-    <form action="validate.php" method="post">
+    <form action="validate.php" method="post" enctype="multipart/formdata">
       <div class="form-group has-feedback">
-        <input type="email" name="email" class="form-control" placeholder="Email">
+        <input type="email" name="email" class="form-control" placeholder="E-mail">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="password" id="senha" name="senha" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+
+        <?php
+            if(isset($_GET['error'])==true){
+        ?>
+                <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="icon fa fa-warning"></i>
+                E-mail ou senha incorreto
+              </div>
+        <?php
+            }
+        ?>
+
       <div class="row">
         <div class="col-xs-8">
+
           <div class="checkbox icheck">
             <label>
               <input type="checkbox"> Lembrar

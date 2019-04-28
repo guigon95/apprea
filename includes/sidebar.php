@@ -41,6 +41,20 @@
             <li><a href="#"><i class="fa fa-circle-o"></i>Processo de Software</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Rankings</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo BASEURL?>pages/ranking_patente.php"><i class="fa fa-circle-o"></i>Patentes</a></li>
+            <li><a href="<?php echo BASEURL?>pages/ranking_nota.php"><i class="fa fa-circle-o"></i>Notas</a></li>
+          </ul>
+        </li>
         
     </section>
     <!-- /.sidebar -->
