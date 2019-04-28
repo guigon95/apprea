@@ -5,87 +5,97 @@
   include (SIDEBAR_TEMPLATE);
   require_once(ABSPATH.'functions.php');
 
- $rows = null;
+  $rows = null;
 
-  $rows = findRanking('usuario');
-
-  
+  $rows = findRankingPatente();
 
   ?>
 
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-      </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i>Início</a></li>
         <li class="active">Ranking por Patente</li>
       </ol>
     </section>
+      </br>
 
     <!-- Main content -->
     <section class="content">
 
-      <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Ranking por Patente</h3>
+      <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Ranking por Patentes</h3>
             </div>
+            <!-- /.box-header -->
             <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Patente</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php 
+                  if ($rows!=null) {
+                     foreach ($rows as $row => $value) { 
+                ?>
+                      <tr>
+                      <td><?php echo($value['nome_usuario']);?></td>
+                      <td><?php 
+                        if($value['id_patente']==2) 
+                          echo("Estagiário");
+                        elseif($value['id_patente']==12) 
+                          echo("Eng. de Software Júnior");
+                        elseif($value['id_patente']==22)
+                          echo("Eng. de Software Pleno"); 
+                        elseif($value['id_patente']==32) 
+                          echo("Eng. de Software Sênior");
 
-             <? if($rows!=null){
 
-                    foreach ($rows as $row => $value) {
-              ?>
-                    <p><?php echo ($value['nome_usuario']);?></p>
-              <?
-                    }
-                }
-                else{
-                  echo "teste";
-                }
-            ?>
+
+                        ?></td>
+                      </tr> 
+                <?php
+                      }  
+                  }
+                ?>
+                
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
             </div>
-
-
-      </div>
-
-     
-          <div align="center" class="timeline-footer">
-              <a href="introducao_testes.php?area=<?php echo $rows['id_area']?>" class="btn btn-primary btn-xs">Continuar</a>
+            <!-- /.box-body -->
           </div>
-
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
-
-  </div>
+  
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-   <!-- <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights 
-    reserved.-->
-  </footer>
+
 
   
 
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- jQuery 3 -->
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+<?php include(FOOTER_TEMPLATE); ?>
+
+
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

@@ -105,9 +105,37 @@
 
 
 
-	function findRanking($table){
+	function findRankingPatente(){
 
-		$sql = "SELECT * FROM " . $table . " t ORDER BY t.id_patente DESC";
+		$sql = "SELECT * FROM usuario t ORDER BY t.id_patente DESC";
+		
+
+		$rs = $GLOBALS['pdo']->prepare($sql);
+		
+		
+		try{
+
+			if ($rs->execute()) {
+				if($rs->rowCount() > 1){
+						return $rs->fetchAll();
+				}
+				elseif($rs->rowCount() == 1){
+						return $rs->fetch(PDO::FETCH_ASSOC);
+				}
+				else{
+					return null;
+				}
+			}
+		} catch (PDOException $e) {
+				die(error($e, $sql));
+			}
+	}
+
+
+	function findRankingNota(){
+
+		$sql = "SELECT f.id_usuario, sum(f.nota) FROM usuario_has_fase f GROUP BY f.id_usuario ORDER BY f.nota DESC";
+
 		
 
 		$rs = $GLOBALS['pdo']->prepare($sql);

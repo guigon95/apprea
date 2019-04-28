@@ -5,95 +5,92 @@
   include (SIDEBAR_TEMPLATE);
   require_once(ABSPATH.'functions.php');
 
- $rows = null;
- $nome_area = null;
- if(isset($_GET['area']))
-  $rows = find('area', $_GET['area'], 'area');
+  $rows = null;
 
-  if($rows != null){       
-        $rows_usr_has_area = find2id('usuario_has_area', $_SESSION['id_usuario'], $rows['id_area'], 'usuario', 'area');
+  $rows = findRankingNota();
 
-        if($rows_usr_has_area['flag_introducao'] == 0 || !empty($_GET['intro'])){
-            $rows_area = find('area', $rows['id_area'], 'area');
-            $nome_area = $rows_area['nome_area']; 
-
-            $descricao_introducao = $rows_area['descricao_introducao']; 
-           
-        }
-        else{
-          header("Location: ".BASEURL."pages/fases.php?area=".$rows['id_area']);
-        }
-  }
-  else{
-    $descricao_introducao = "Nenhuma Introdução cadastrada";
-
-  }
   ?>
 
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-       <?php echo ($nome_area)?>
-      </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i>Início</a></li>
-        <li class="active">Ranking por Notas</li>
+        <li class="active">Ranking por Patente</li>
       </ol>
     </section>
+      </br>
 
     <!-- Main content -->
     <section class="content">
 
-      <div class="box box-primary">
-            <div class="box-header with-border">
+      <div class="box">
+            <div class="box-header">
               <h3 class="box-title">Ranking por Notas</h3>
             </div>
+            <!-- /.box-header -->
             <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Média</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php 
+                  if ($rows!=null) {
+                     foreach ($rows as $row => $value) { 
 
-              <p><?php echo $descricao_introducao?></p>
-
+                      $rowUsuario = find('usuario', $value['id_usuario'], 'usuario');
+                     
+                      //$rowFase1 = find2id('usuario_has_fase', $value['id_usuario'], '2', 'usuario', 'fase');
+                      //$rowFase2 = find2id('usuario_has_fase', $value['id_usuario'], '12', 'usuario', 'fase');
+                      //$rowFase3 = find2id('usuario_has_fase', $value['id_usuario'], '22', 'usuario', 'fase');
+                      //$rowFase4 = find2id('usuario_has_fase', $value['id_usuario'], '32', 'usuario', 'fase');
+                ?>
+                      <tr>
+                      <td><?php echo($rowUsuario['nome_usuario']);?></td>
+                      <td><?php echo (number_format($value['sum(f.nota)']/8, 2, ',', ' '));?></td>
+                      </tr> 
+                <?php
+                      }  
+                  }
+                ?>
+                
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
             </div>
-
-
-      </div>
-
-     
-          <div align="center" class="timeline-footer">
-              <a href="introducao_testes.php?area=<?php echo $rows['id_area']?>" class="btn btn-primary btn-xs">Continuar</a>
+            <!-- /.box-body -->
           </div>
-
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
-
-  </div>
+  
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-   <!-- <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights 
-    reserved.-->
-  </footer>
+
 
   
 
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- jQuery 3 -->
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+<?php include(FOOTER_TEMPLATE); ?>
+
+
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
