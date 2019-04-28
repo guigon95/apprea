@@ -40,7 +40,7 @@
 
                     foreach ($rows as $row => $value) {
               ?>
-                    <p><?php echo ($value['id_patente']);?></p>
+                    <p><?php echo ($value['nome_usuario']);?></p>
               <?
                     }
                 }
