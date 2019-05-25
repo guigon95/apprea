@@ -7,7 +7,7 @@
 
   $rows = null;
 
-  $rows = findRankingNota();
+  $rows = findUsuariosOrdenados();
 
   ?>
 
@@ -21,7 +21,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i>Início</a></li>
-        <li class="active">Ranking por Notas</li>
+        <li class="active">Alunos</li>
       </ol>
     </section>
       </br>
@@ -31,7 +31,7 @@
 
       <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Ranking por Notas</h3>
+              <h3 class="box-title">Alunos</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -39,24 +39,17 @@
                 <thead>
                 <tr>
                   <th>Nome</th>
-                  <th>Média</th>
+                  <th>Link</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php 
+                <?php     
                   if ($rows!=null) {
                      foreach ($rows as $row => $value) { 
-
-                      $rowUsuario = find('usuario', $value['id_usuario'], 'usuario');
-                     
-                      //$rowFase1 = find2id('usuario_has_fase', $value['id_usuario'], '2', 'usuario', 'fase');
-                      //$rowFase2 = find2id('usuario_has_fase', $value['id_usuario'], '12', 'usuario', 'fase');
-                      //$rowFase3 = find2id('usuario_has_fase', $value['id_usuario'], '22', 'usuario', 'fase');
-                      //$rowFase4 = find2id('usuario_has_fase', $value['id_usuario'], '32', 'usuario', 'fase');
                 ?>
                       <tr>
-                      <td><?php echo($rowUsuario['nome_usuario']);?></td>
-                      <td><?php echo (number_format($value['sum(f.nota)']/8, 2, ',', ' '));?></td>
+                      <td><?php echo($value['nome_usuario'])?> <?php echo($value['sobrenome_usuario'])?></td>
+                      <td><a href="<?php echo BASEURL?>pages/alunos.php?id=<?php echo ($value['id_usuario']);?>"><i class="fa fa-edit"> </td>
                       </tr> 
                 <?php
                       }  

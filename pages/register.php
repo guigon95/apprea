@@ -62,7 +62,7 @@
 ?>  
       <div class="form-group has-error">
           <span class="help-block">
-            <?php if($_GET['erro'] == 1) echo("E-mail já cadastrado."); elseif($_GET['erro'] == 2) echo("Senhas incorretas.")?>
+            <?php if($_GET['erro'] == 1) echo("E-mail já cadastrado."); elseif($_GET['erro'] == 2) echo("Senhas incorretas."); elseif($_GET['erro'] == 3) echo("Informe um e-mail.")?>
           </span>
       </div>
 <?php

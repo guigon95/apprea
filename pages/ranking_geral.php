@@ -7,7 +7,7 @@
 
   $rows = null;
 
-  $rows = findRankingNota();
+  $rows = findRankingGeral();
 
   ?>
 
@@ -21,7 +21,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i>Início</a></li>
-        <li class="active">Ranking por Notas</li>
+        <li class="active">Ranking Geral</li>
       </ol>
     </section>
       </br>
@@ -31,7 +31,7 @@
 
       <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Ranking por Notas</h3>
+              <h3 class="box-title">Ranking Geral</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -39,6 +39,7 @@
                 <thead>
                 <tr>
                   <th>Nome</th>
+                  <th>Patente</th>
                   <th>Média</th>
                 </tr>
                 </thead>
@@ -47,16 +48,21 @@
                   if ($rows!=null) {
                      foreach ($rows as $row => $value) { 
 
-                      $rowUsuario = find('usuario', $value['id_usuario'], 'usuario');
-                     
-                      //$rowFase1 = find2id('usuario_has_fase', $value['id_usuario'], '2', 'usuario', 'fase');
-                      //$rowFase2 = find2id('usuario_has_fase', $value['id_usuario'], '12', 'usuario', 'fase');
-                      //$rowFase3 = find2id('usuario_has_fase', $value['id_usuario'], '22', 'usuario', 'fase');
-                      //$rowFase4 = find2id('usuario_has_fase', $value['id_usuario'], '32', 'usuario', 'fase');
+                      //$rowUsuario = find('usuario', $value['id_usuario'], 'usuario');
                 ?>
                       <tr>
-                      <td><?php echo($rowUsuario['nome_usuario']);?></td>
-                      <td><?php echo (number_format($value['sum(f.nota)']/8, 2, ',', ' '));?></td>
+                      <td><?php echo($value['nome_usuario']);?> <?php echo ($value['sobrenome_usuario']);?></td>
+                      <td><?php 
+                        if($value['id_patente']==2) 
+                          echo("Estagiário");
+                        elseif($value['id_patente']==12) 
+                          echo("Eng. de Software Júnior");
+                        elseif($value['id_patente']==22)
+                          echo("Eng. de Software Pleno"); 
+                        elseif($value['id_patente']==32) 
+                          echo("Eng. de Software Sênior");
+                        ?></td>
+                      <td><?php echo (number_format($value['sum(uf.nota)']/8, 2, ',', ' '));?></td>
                       </tr> 
                 <?php
                       }  

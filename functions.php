@@ -104,6 +104,29 @@
 	}
 
 
+	function findUsuariosOrdenados(){
+
+		$sql = "SELECT * FROM usuario f  ORDER BY f.nome_usuario asc";
+
+		$rs = $GLOBALS['pdo']->prepare($sql);
+	
+		try{
+
+			if ($rs->execute()) {
+				if($rs->rowCount() > 1){
+						return $rs->fetchAll();
+				}
+				elseif($rs->rowCount() == 1){
+						return $rs->fetch(PDO::FETCH_ASSOC);
+				}
+				else{
+					return null;
+				}
+			}
+		} catch (PDOException $e) {
+				die(error($e, $sql));
+		}
+	}
 
 	function findRankingPatente(){
 
@@ -132,15 +155,60 @@
 	}
 
 
-	function findRankingNota(){
+	function findRankingGeral(){
 
-		$sql = "SELECT f.id_usuario, sum(f.nota) FROM usuario_has_fase f GROUP BY f.id_usuario ORDER BY f.nota DESC";
-
-		
+		$sql = "SELECT u.nome_usuario, u.sobrenome_usuario, u.id_patente, sum(uf.nota) FROM usuario u, usuario_has_fase uf WHERE u.id_usuario = uf.id_usuario GROUP BY u.id_usuario ORDER BY u.id_patente DESC, sum(uf.nota) DESC";
 
 		$rs = $GLOBALS['pdo']->prepare($sql);
-		
-		
+	
+		try{
+
+			if ($rs->execute()) {
+				if($rs->rowCount() > 1){
+						return $rs->fetchAll();
+				}
+				elseif($rs->rowCount() == 1){
+						return $rs->fetch(PDO::FETCH_ASSOC);
+				}
+				else{
+					return null;
+				}
+			}
+		} catch (PDOException $e) {
+				die(error($e, $sql));
+		}
+	}
+
+	function findRankingNota(){
+
+		$sql = "SELECT f.id_usuario, sum(f.nota) FROM usuario_has_fase f GROUP BY f.id_usuario ORDER BY sum(f.nota) DESC";
+
+		$rs = $GLOBALS['pdo']->prepare($sql);
+	
+		try{
+
+			if ($rs->execute()) {
+				if($rs->rowCount() > 1){
+						return $rs->fetchAll();
+				}
+				elseif($rs->rowCount() == 1){
+						return $rs->fetch(PDO::FETCH_ASSOC);
+				}
+				else{
+					return null;
+				}
+			}
+		} catch (PDOException $e) {
+				die(error($e, $sql));
+			}
+	}
+
+	function findAlunos(){
+
+		$sql = "SELECT * FROM usuario u WHERE u.admin = o ORDER BY u.nome_usuario ASC";
+
+		$rs = $GLOBALS['pdo']->prepare($sql);
+	
 		try{
 
 			if ($rs->execute()) {

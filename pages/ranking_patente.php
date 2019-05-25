@@ -21,7 +21,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i>Início</a></li>
-        <li class="active">Ranking por Patente</li>
+        <li class="active">Ranking por Patentes</li>
       </ol>
     </section>
       </br>

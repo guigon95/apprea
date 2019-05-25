@@ -35,6 +35,8 @@ if($stmt->rowCount() == 1){
             $_SESSION['senha_usuario'] = $row['senha_usuario'];
             $_SESSION['nome_usuario'] = $row['nome_usuario'];
             $_SESSION['introducao_arduino'] = $row['introducao_arduino'];
+            $_SESSION['id_patente'] = $row['id_patente'];
+            $_SESSION['admin'] = $row['admin'];
 
            header('Location: index.php');
         }

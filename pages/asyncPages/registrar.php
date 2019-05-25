@@ -4,7 +4,7 @@
 
 	echo "registrando...";
 
-	if(isset($_POST['email'])){
+	if(isset($_POST['email']) and $_POST['email'] != null){
 
 		$sql = "SELECT * FROM usuario";
 		$sql = $sql." WHERE email_usuario = ?";
@@ -75,6 +75,10 @@
 		else {
 			header('location: ../register.php?erro=1');
 		}
+	}
+
+	else{
+		header('location: ../register.php?erro=3');
 	}
 	
 	
