@@ -4,7 +4,7 @@
 
 	echo "registrando...";
 
-	if(isset($_POST['email']) and $_POST['email'] != null){
+	if(isset($_POST['email']) && $_POST['email'] != null){
 
 		$sql = "SELECT * FROM usuario";
 		$sql = $sql." WHERE email_usuario = ?";
