@@ -21,7 +21,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="<?php echo BASEURL?>index.php"><i class="fa fa-dashboard"></i>Início</a></li>
-        <li class="active">Ranking por Patentes</li>
+        <li class="active">Ranking por Nível</li>
       </ol>
     </section>
       </br>
@@ -31,7 +31,7 @@
 
       <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Ranking por Patentes</h3>
+              <h3 class="box-title">Ranking por Nivel</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -39,7 +39,7 @@
                 <thead>
                 <tr>
                   <th>Nome</th>
-                  <th>Patente</th>
+                  <th>Nivel</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -58,9 +58,6 @@
                           echo("Eng. de Software Pleno"); 
                         elseif($value['id_patente']==32) 
                           echo("Eng. de Software Sênior");
-
-
-
                         ?></td>
                       </tr> 
                 <?php

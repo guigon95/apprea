@@ -31,7 +31,6 @@
     <section class="content">
 
        <!-- Small boxes (Stat box) -->
-
       <?php if($rows != null){
                 
                 foreach ($rows as $row => $value) {
@@ -64,8 +63,6 @@
                 } //end foreach
               }//end if ?>
 
-     
-
     </section>
     <!-- /.content -->
   </div>
@@ -95,7 +92,8 @@
 <script src="dist/js/demo.js"></script>
 <script>
   $(document).ready(function () {
-    $('.sidebar-menu').tree()
+    $('.sidebar-menu').tree();
+
   })
 </script>
 </body>

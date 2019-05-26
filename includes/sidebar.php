@@ -61,7 +61,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo BASEURL?>pages/ranking_geral.php"><i class="fa fa-circle-o"></i>Geral</a></li>
-            <li><a href="<?php echo BASEURL?>pages/ranking_patente.php"><i class="fa fa-circle-o"></i>Patentes</a></li>
+            <li><a href="<?php echo BASEURL?>pages/ranking_patente.php"><i class="fa fa-circle-o"></i>Nível</a></li>
             <li><a href="<?php echo BASEURL?>pages/ranking_nota.php"><i class="fa fa-circle-o"></i>Notas</a></li>
           </ul>
         </li>

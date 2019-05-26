@@ -39,6 +39,7 @@
                 <thead>
                 <tr>
                   <th>Nome</th>
+                  <th>Nível</th>
                   <th>Média</th>
                 </tr>
                 </thead>
@@ -55,7 +56,17 @@
                       //$rowFase4 = find2id('usuario_has_fase', $value['id_usuario'], '32', 'usuario', 'fase');
                 ?>
                       <tr>
-                      <td><?php echo($rowUsuario['nome_usuario']);?></td>
+                      <td><?php echo($rowUsuario['nome_usuario']);?> <?php echo ($rowUsuario['sobrenome_usuario']); ?></td>
+                      <td><?php 
+                        if($rowUsuario['id_patente']==2) 
+                          echo("Estagiário");
+                        elseif($rowUsuario['id_patente']==12) 
+                          echo("Eng. de Software Júnior");
+                        elseif($rowUsuario['id_patente']==22)
+                          echo("Eng. de Software Pleno"); 
+                        elseif($rowUsuario['id_patente']==32) 
+                          echo("Eng. de Software Sênior");
+                        ?></td>
                       <td><?php echo (number_format($value['sum(f.nota)']/8, 2, ',', ' '));?></td>
                       </tr> 
                 <?php

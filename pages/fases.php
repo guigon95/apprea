@@ -5,6 +5,8 @@
     include (SIDEBAR_TEMPLATE);
     require_once(ABSPATH.'functions.php');
     include ("../includes/modal.php");
+    include ("../includes/modalPatente.php");
+
 
    
     if(!empty($_GET['area']))
@@ -21,7 +23,9 @@
       }
 ?>
   <!-- =============================================== -->
-
+  	  <input type="hidden" id="nome_usuario" value="<?php echo ($_SESSION['nome_usuario'])?>">
+      <input type="hidden" id="id_patente" value="<?php echo ($_SESSION['id_patente'])?>">
+      <input type="hidden" id="flag_patente" value="<?php echo ($_SESSION['flag_patente'])?>">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -124,6 +128,31 @@
                 $('#modal-resposta #embed').attr('src', '<?php echo(BASEURL)?>pages/respostas/'+resposta);
                 $('#modal-resposta').modal('show'); 
             });
+
+     
+    var nome_usuario = $("#nome_usuario").val();
+    var patente = $("#id_patente").val();
+    var flag_patente = $("#flag_patente").val();
+
+    if(patente == 2)
+      patente = "Estagiário";
+    else if(patente == 12)
+      patente = "Engenheiro de Software Júnior";
+    else if (patente == 22)
+      patente = "Engenheiro de Software Pleno";
+    else if (patente = 32)
+      patente = "Engenheiro de Software Sênior";
+
+    
+        $('#modal-patente #label_nome').text(nome_usuario);
+        $('#modal-patente #label_patente').text(patente);
+        
+        if(flag_patente == 1){
+             $.ajax({ url: 'asyncPages/flag_patente.php' });
+            $('#modal-patente').modal('show'); 
+        }
+   
+
     });
 </script>
 </body>

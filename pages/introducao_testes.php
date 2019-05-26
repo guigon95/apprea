@@ -154,7 +154,7 @@
     var i = 0;
     for(i = 0; i<contRadio;i++){
         if(!$("input:radio[name='radioGroup"+i+"']:checked").val()){
-          alert("Selecione todas as alternativas");
+          alert("Responda todas as perguntas");
           return;
         }
         else if($("input:radio[name='radioGroup"+i+"']:checked").val() == $('#resposta_teste'+i).val()){

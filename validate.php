@@ -37,6 +37,7 @@ if($stmt->rowCount() == 1){
             $_SESSION['introducao_arduino'] = $row['introducao_arduino'];
             $_SESSION['id_patente'] = $row['id_patente'];
             $_SESSION['admin'] = $row['admin'];
+            $_SESSION['flag_patente'] = $row['flag_patente'];
 
            header('Location: index.php');
         }
