@@ -81,7 +81,7 @@
 
 
     <a href="#">Esqueci minha senha</a><br>
-    <!--<a href="pages/register.php" class="text-center">Registrar</a> -->
+    <a href="pages/register.php" class="text-center">Registrar</a>
 
   </div>
   <!-- /.login-box-body -->
