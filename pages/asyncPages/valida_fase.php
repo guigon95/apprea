@@ -45,7 +45,7 @@
 			validaPatente();
 		}
 		else if($_POST['numero_fase'] == 1 && $_POST['id_area'] == 22 && $_SESSION['id_patente'] == 2){
-			$sql = "update usuario set flag_patente = 1, id_patente = 22 where id_usuario = ".$_SESSION['id_usuario'];
+			$sql = "update usuario set flag_patente = 1, id_patente = 12 where id_usuario = ".$_SESSION['id_usuario'];
 			$rs = $GLOBALS['pdo']->prepare($sql);
 			$rs->execute();
 			validaPatente();
@@ -57,12 +57,30 @@
 			validaPatente();
 		}
 		else if($_POST['numero_fase'] == 2 && $_POST['id_area'] == 12 && $_SESSION['id_patente'] == 22){
-			$sql = "update usuario set flag_patente = 1, id_patente = 22 where id_usuario = ".$_SESSION['id_usuario'];
+			$sql = "update usuario set flag_patente = 1, id_patente = 32 where id_usuario = ".$_SESSION['id_usuario'];
 			$rs = $GLOBALS['pdo']->prepare($sql);
 			$rs->execute();
 			validaPatente();
 		}
 		else if($_POST['numero_fase'] == 2 && $_POST['id_area'] == 22 && $_SESSION['id_patente'] == 22){
+			$sql = "update usuario set flag_patente = 1, id_patente = 32 where id_usuario = ".$_SESSION['id_usuario'];
+			$rs = $GLOBALS['pdo']->prepare($sql);
+			$rs->execute();
+			validaPatente();
+		}
+		else if($_POST['numero_fase'] == 2 && $_POST['id_area'] == 32 && $_SESSION['id_patente'] == 22){
+			$sql = "update usuario set flag_patente = 1, id_patente = 32 where id_usuario = ".$_SESSION['id_usuario'];
+			$rs = $GLOBALS['pdo']->prepare($sql);
+			$rs->execute();
+			validaPatente();
+		}
+		else if($_POST['numero_fase'] == 1 && $_POST['id_area'] == 32 && $_SESSION['id_patente'] == 2){
+			$sql = "update usuario set flag_patente = 1, id_patente = 12 where id_usuario = ".$_SESSION['id_usuario'];
+			$rs = $GLOBALS['pdo']->prepare($sql);
+			$rs->execute();
+			validaPatente();
+		}
+		else if($_POST['numero_fase'] == 3 && $_POST['id_area'] == 32 && $_SESSION['id_patente'] == 12){
 			$sql = "update usuario set flag_patente = 1, id_patente = 22 where id_usuario = ".$_SESSION['id_usuario'];
 			$rs = $GLOBALS['pdo']->prepare($sql);
 			$rs->execute();
