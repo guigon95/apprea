@@ -122,7 +122,7 @@
      
                 var numero_fase = $('#numero_fase').val();
                 var resposta = $(this).attr('id');
-                $('#modal-resposta .modal-title').html('Resposta - Fase '+numero_fase);
+                $('#modal-resposta .modal-title').html('Resposta Fase');
                 $('#modal-resposta .pgtPorcentagem').hide();
                 $('#modal-resposta #buttonContinuar').hide();
                 $('#modal-resposta #embed').attr('src', '<?php echo(BASEURL)?>pages/respostas/'+resposta);
