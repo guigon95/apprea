@@ -75,7 +75,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="https://forms.gle/vUFqTa2bd13BUEqv5"><i class="fa fa-circle-o"></i>Q1</a></li>
+            <li><a href="https://forms.gle/vUFqTa2bd13BUEqv5" target="_blank"><i class="fa fa-circle-o"></i>Q1</a></li>
           </ul>
         </li>
 
