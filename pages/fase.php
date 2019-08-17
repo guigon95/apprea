@@ -135,7 +135,7 @@
                       <input type="hidden" name="resposta_fase" id="resposta_fase" value="<?php echo $rows['resposta_fase'];?>" />
                       <label for="exampleInputFile">File input</label>
                       <input type="file" name="inputFile" id="inputFile">
-
+                      <h1><?php echo $rows['id_area']; ?></h1>
                       <p class="help-block">Carregue as respostas em um arquivo compactado.</p>
                     </div>
                 </div>
