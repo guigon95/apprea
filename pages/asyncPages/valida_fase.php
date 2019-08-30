@@ -47,7 +47,7 @@
 			$rs->execute();
 			validaPatente();
 		}
-		else if($_POST['numero_fase'] == 3 && $_POST['id_area'] == 22 && $_SESSION['id_patente'] == 12){
+		else if($_POST['numero_fase'] == 3 && $_POST['id_area'] == 12 && $_SESSION['id_patente'] == 12){
 			$sql = "update usuario set flag_patente = 1, id_patente = 22 where id_usuario = ".$_SESSION['id_usuario'];
 			$rs = $GLOBALS['pdo']->prepare($sql);
 			$rs->execute();
