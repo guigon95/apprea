@@ -34,7 +34,7 @@
       <?php if($rows != null){
                 
                 foreach ($rows as $row => $value) {
-                        if($value['nome_area'] != 'introducao' and $value['id_area'] != 32){
+                        if($value['nome_area'] != 'introducao'){
       ?>
        <div class="row">
 
