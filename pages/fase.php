@@ -48,11 +48,13 @@
               <form role="form">
               <div class="attachment-text">
 
-                
+                <?php if($rows['id_area'] != 32){ ?>
                 <p><b>Objetivo</b></p>
                 <p><?php echo $rows['objetivo_fase']?></p>
-
+                <?php } ?>
                 <p><?php if($rows['id_area'] == 12) echo "Download: <a href='/pages/respostas/Casos-de-Teste_Exemplo.odt'>Exemplo Caso de Teste</a>"?></p>
+                
+
                 <p><b>Descrição da Fase</b></p>
                 <p><?php echo $rows['descricao_fase']?></p>
                 </br>
