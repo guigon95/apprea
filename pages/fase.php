@@ -80,6 +80,8 @@
                	</br>
             	</br>
 
+              <?php if ($rows['id_area'] != 32) { ?>
+              
                 <p><b>Código</b></p>
 
                 <div class="row" style="margin-top: 10px;">
@@ -104,7 +106,7 @@
      }
      else
         echo "Nenhum código no banco de dados";
-
+    }
 ?>
                                       </pre>
                                 </div>
