@@ -80,7 +80,7 @@
                	</br>
             	</br>
 
-              <?php if ($rows['id_area'] != 32) { ?>
+              
               
                 <p><b>Código</b></p>
 
@@ -118,7 +118,7 @@
                           </div>
                           <!-- /.row -->
                         </form>
-<?php } }
+<?php } 
 
                 $rowsUsrHasFase = find2id('usuario_has_fase', $_SESSION['id_usuario'], $_GET['fase'], 'usuario', 'fase');
                 if($rowsUsrHasFase['flag_fase'] < 2){
