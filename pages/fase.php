@@ -223,7 +223,6 @@
          // $('#modal-resposta #id_fase').attr('value', id_fase);
          // $('#modal-resposta #btn').hide();
          // $("#modal-resposta").modal("show");
-         alert(numero_fase + " " + id_fase + " " + id_area);
         }
       	if(flag == 1){
 

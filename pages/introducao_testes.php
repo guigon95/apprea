@@ -179,7 +179,7 @@
                $.ajax({
                       url: 'asyncPages/valida_testes.php',
                       method: 'POST',
-                      data: {valida_testes: 1},
+                      data: {valida_testes: 1, idarea: id_area},
                       beforeSend: function(){
                       },
                       success: function(e){
