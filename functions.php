@@ -181,7 +181,7 @@
 
 	function findRankingNota(){
 
-		$sql = "SELECT f.id_usuario, sum(f.nota) FROM usuario_has_fase f, usuario u where u.id_usuario = f.id_usuario and u.admin != 1 GROUP BY f.id_usuario ORDER BY sum(f.nota) DESC";
+		$sql = "SELECT f.id_usuario, sum(f.nota) FROM usuario_has_fase f where admin != 1 GROUP BY f.id_usuario ORDER BY sum(f.nota) DESC";
 
 		$rs = $GLOBALS['pdo']->prepare($sql);
 	
