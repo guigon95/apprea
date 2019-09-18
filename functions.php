@@ -130,7 +130,7 @@
 
 	function findRankingPatente(){
 
-		$sql = "SELECT * FROM usuario t where admin != 1 ORDER BY t.id_patente DESC";
+		$sql = "SELECT * FROM usuario t where t.admin != 1 ORDER BY t.id_patente DESC";
 		
 
 		$rs = $GLOBALS['pdo']->prepare($sql);
@@ -157,7 +157,7 @@
 
 	function findRankingGeral(){
 
-		$sql = "SELECT u.nome_usuario, u.sobrenome_usuario, u.id_patente, sum(uf.nota) FROM usuario u, usuario_has_fase uf WHERE u.id_usuario = uf.id_usuario and admin != 1 GROUP BY u.id_usuario ORDER BY u.id_patente DESC, sum(uf.nota) DESC";
+		$sql = "SELECT f.id_usuario, sum(f.nota) FROM usuario_has_fase f where admin != 1 GROUP BY f.id_usuario ORDER BY sum(f.nota) DESC";
 
 		$rs = $GLOBALS['pdo']->prepare($sql);
 	
