@@ -35,8 +35,6 @@
 <div class="login-box">
   <div class="login-logo">
     <a href="#"><h1>Boas práticas em Engenharia de Software</h1></a>
-    <br>
-    <a href="#"><h1 color="red">Te amo Flávia</h1></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
